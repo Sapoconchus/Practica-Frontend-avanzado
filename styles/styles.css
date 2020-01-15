@@ -1,84 +1,14 @@
-.card-container {
-    display: flex;
-    flex-direction: column; /* media query para que pase a row en cuanto la pantalla llegue a 600px*/
-    margin: 10px;
-    min-width: 300px;
+@import "cards.css";
+@import "navbar.css";
+@import "header.css";
+
+/*cosas globales como tipografía y demás. Se hará */
+
+.logo {
+    font-family: 'Baloo Bhaina', cursive;
+    color: gold;
 }
 
-
-.beer-card.preview {
-    display: flex;
-   /* flex-wrap: wrap;
-    flex-grow: 1; esto con la query de 600 px*/
-    flex-direction: row;
-    border: 2px solid gold;
-    max-height: 200px;
-    max-width: 500px;
-    overflow: hidden;
-    margin: 10px 0;
+.logo span {
+    color: white;
 }
-
-.beer-card.more-info {
-    display: flex;
-   /* flex-wrap: wrap;
-    flex-grow: 1; esto con la query de 600 px*/
-    flex-direction: row;
-    border: 2px solid gold;
-    max-height: 400px;
-    max-width: 1000px;
-    overflow: hidden;
-    margin: 10px 0;
-}
-
-.beer-card.more-info .beer-pic, .beer-card.more-info .info-container {
-    display: none;
-}
-
-
-.beer-pic {
-    width: 35%;
-    border: 2px solid red;
-}
-
-img {
-    height: 100%;
-    display: cover;
-    align-self: center;
-}
-
-.info-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    border: 2px solid green;
-    width: 100%;
-    padding: 5px;
-}
-
-.beer-info {
-    border: 2px solid gray;
-    width: 100%;
-}
-h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.card-pills {
-    display: flex;
-    flex-direction: row;
-    border: 2px solid black;
-    width: 100%;
-    padding: 5px;
-}
-
-
-/*
-STUFF TO DO:
-
-1. posicionar bien la imagen de la cerveza
-2. posicionar bien h1 y descripción de la birra
-
-
-*/

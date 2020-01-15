@@ -1,0 +1,26 @@
+.header-container {
+	width: 100%;
+	margin:0;
+	height: 250px;
+	overflow: hidden;
+	position: relative;
+	top: 0;
+}
+.header-container img {
+	width: 100vw;
+	object-fit: cover;
+	z-index: 1;
+}
+
+header h1 {
+	position: absolute;
+	display: inline-block;
+	top: 40%;
+	width: 100%;
+	text-align: center;
+	z-index: 2;
+	font-size: 4rem; /* meter lo de que aumente la fuente con el tamaño*/
+	z-index:2;
+	text-shadow: 2px 2px gray;
+
+}

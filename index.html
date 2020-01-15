@@ -6,13 +6,36 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Beerflix. Tu portal de cervezas artesanas.</title>
     <link rel="stylesheet" type="text/css" href="./styles/reset.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina&display=swap" rel="stylesheet">
+   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <link rel="stylesheet" type="text/css" href="./styles/typography/icofont/icofont.css">
     <link rel="stylesheet" type="text/css" href="./styles/styles.css">
 </head>
 <body>
     <nav>
-         <!--   
+         
+        <div class="logo no-show">
+            <a href="/">Beer<span>Flix</span></a>
+        </div>
+
+        <div class="search-bar">
+            <div class="filter-container">
+                <form id="search-form" class="filter-input" novalidate>
+                    <input data-pattern-mismatch="Input invalid" required placeholder="search your serie" class="input search" type="text">
+                    <button type="submit" class="button search">Search</button>
+                </form>
+            </div>
+            <div class="navbar-icon">
+                <!--
+                <i id="navbar-search" class="fas fa-search"></i>
+                <i id="navbar-close" class="fas fa-times"></i>
+                   BUSCAR ICONOS PROPIOS E INTRODUCIRLOS -->
+                <i class="icofont-like"></i>
+            </div>
+    
+        </div>   
+
+        <!--   
         <div class="nav-wrapper">
             <form>
                 <div class="input-field">
@@ -25,7 +48,10 @@
         -->
     </nav>
     <header>
-
+        <div class="header-container">
+            <img src="./imgs/homer_fridge_bn.jpg">
+        </div>
+        <h1 class="logo">Beer<span>Flix</span></h1>
     </header>
     <main>
 

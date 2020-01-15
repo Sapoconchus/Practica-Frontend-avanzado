@@ -1,0 +1,7 @@
+nav {
+	border: 5px solid black;
+	display: fixed;
+	opacity: 0.5;
+	width: 100%;
+	z-index: 99;
+}
