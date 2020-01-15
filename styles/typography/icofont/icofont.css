@@ -43,6 +43,11 @@ url("./fonts/icofont.woff") format("woff");
   content: "\ef6e";
 }
 
+.icofont-search-1:before
+{
+  content: "\ed11";
+}
+
 .icofont-xs
 {
   font-size: .5em;

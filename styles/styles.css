@@ -12,3 +12,14 @@
 .logo span {
     color: white;
 }
+
+a {
+	text-decoration: none;
+}
+
+.no-show {
+    visibility: hidden;
+}
+.show {
+    visibility: visible;
+}

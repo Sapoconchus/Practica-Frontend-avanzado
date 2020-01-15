@@ -1,7 +1,60 @@
 nav {
-	border: 5px solid black;
-	display: fixed;
-	opacity: 0.5;
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	opacity: 0.6;
 	width: 100%;
 	z-index: 99;
+	background-color: rgb(29, 28, 24);
+	min-height: 50px;
+}
+
+nav a {
+	color: gold;
+}
+
+nav .logo.show {
+	color: white;
+	font-size: 2rem;
+}
+
+.search-bar {
+	display: flex;
+	flex-direction: row;
+	margin-right: 10px;
+	align-content: center;
+	padding: 5px;
+}
+.search-bar input{
+	height: 30px;
+	width: 250px;
+	padding: 5px 0 5px 15px;
+	font-size: 1rem;
+	border-radius: 5px;
+}
+
+.search-bar button {
+	height: 44px;
+	width: 44px;
+	margin-left: 10px;
+	border-radius: 5px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.search-bar button:hover {
+	cursor:pointer;
+	background-color: gold;
+}
+
+.navbar-icon .icofont-search-1 {
+	font-size: 22px;
+	color: white;
+	line-height: 44px;
+}
+
+.navbar-icon .icofont-search-1:hover {
+	cursor:pointer;
+	color: gold;
 }
