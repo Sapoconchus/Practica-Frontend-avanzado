@@ -1,8 +1,9 @@
 .card-container {
     display: flex;
     flex-direction: column; /* media query para que pase a row en cuanto la pantalla llegue a 600px*/
+    justify-content: center;
     margin: 10px;
-    min-width: 300px;
+    min-width: 290px;
 }
 
 
@@ -90,6 +91,17 @@ img {
     text-align: left;
 }
 
+.card-pills .icofont-speech-comments, #comments-num {
+    display: none;
+}
+
+@media all and (min-width: 400px) {
+
+    .card-pills .icofont-speech-comments, #comments-num {
+    display: inline-block;
+    }
+}
+
 
 @media all and (min-width:600px){
     .card-container {
@@ -99,6 +111,5 @@ img {
 
     .beer-card.preview {
         margin: 10px 10px;
-
     }
 }

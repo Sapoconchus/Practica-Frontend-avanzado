@@ -14,21 +14,24 @@ nav a {
 	color: gold;
 }
 
-nav .logo.show {
+nav .logo {
 	color: white;
 	font-size: 2rem;
+	position: relative;
 }
 
 .search-bar {
 	display: flex;
-	flex-direction: row;
+	flex-direction: row-reverse;
+	flex-shrink: 1
 	margin-right: 10px;
-	align-content: center;
+	align-items: center;
 	padding: 5px;
 }
 .search-bar input{
 	height: 30px;
-	width: 250px;
+	max-width: 45vw;
+	/*max-width: 250px;*/
 	padding: 5px 0 5px 15px;
 	font-size: 1rem;
 	border-radius: 5px;
@@ -43,7 +46,7 @@ nav .logo.show {
 	font-weight: bold;
 }
 
-.search-bar button:hover {
+.search-bar .button:hover {
 	cursor:pointer;
 	background-color: gold;
 }
@@ -52,9 +55,23 @@ nav .logo.show {
 	font-size: 22px;
 	color: white;
 	line-height: 44px;
+	float: right;
+	clear: right;
+	display: inline-block;
+	border: 2px solid gray;
+
 }
 
-.navbar-icon .icofont-search-1:hover {
+.navbar-icon .icofont-search-1:hover, .search-bar .close:hover {
 	cursor:pointer;
 	color: gold;
+}
+
+.search-bar .close {
+	background-color: rgb(29, 28, 24);
+	border: 0;
+	color: white;
+	font-size: 25px;
+	padding: 0;
+	margin: 0;
 }

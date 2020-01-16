@@ -23,3 +23,7 @@ a {
 .show {
     visibility: visible;
 }
+
+.no-display {
+    display: none;
+}

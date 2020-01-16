@@ -14,42 +14,32 @@
 <body>
     <nav>
          
-        <div class="logo no-show">
+        <div id="nav-logo" class="logo no-display">
             <a href="/">Beer<span>Flix</span></a>
         </div>
 
         <div class="search-bar">
-            <div class="filter-container ">
-                <form id="search-form" class="filter-input" novalidate>
-                    <input data-pattern-mismatch="Input invalid" required placeholder="sort your beers" class="input search" type="text">
+            <div class="filter-container">
+                <form id="search-form" class="filter-input no-display" novalidate>
+                   <button type="button" class="close">X</button>
+                   <input data-pattern-mismatch="Input invalid" required placeholder="sort your beers" class="input search" type="text">
                     <button type="submit" class="button search">Go!</button>
                 </form>
             </div>
             <div class="navbar-icon">
-                <!--
-                <i id="navbar-search" class="fas fa-search"></i>
-                <i id="navbar-close" class="fas fa-times"></i>
-                   BUSCAR ICONOS PROPIOS E INTRODUCIRLOS -->
-                <i class="icofont-search-1 no-show"></i>
+                <i class="icofont-search-1"></i>
             </div>
     
         </div>   
 
-        <!--   
-        <div class="nav-wrapper">
-            <form>
-                <div class="input-field">
-                    <input id="search" type="search" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
-                </div>
-            </form>
-        </div>
-        -->
     </nav>
     <header>
         <div class="header-container">
-            <img src="./imgs/homer_fridge_bn.jpg">
+            <picture>
+            <source srcset="./imgs/homer_fridge_bn_360.jpg 450w, ./imgs/homer_fridge_bn.jpg 450w" media="(max-width: 600px">
+            <source srcset="./imgs/mario_vaquerizo_bn_600.jpg 600w, ./imgs/mario_vaquerizo_bn.jpg 900w" media="(min-width: 601px">
+            <img src="./imgs/homer_fridge_bn.jpg" alt="Header background image">
+            </picture>
         </div>
         <h1 class="logo">Beer<span>Flix</span></h1>
     </header>
@@ -69,9 +59,9 @@
                     <div class ="card-pills">
                         <div>
                             <i class="pill icofont-like"></i>
-                            <p class ="pill likes-num">num</p>
+                            <p id="likes-num" class ="pill">num</p>
                             <i class="pill icofont-speech-comments"></i>
-                            <p class ="pill comments-num">num</p>
+                            <p id="comments-num"class ="pill">num</p>
                         </div>
                         <div>
                         <a href="" class="pill"><p> + more info</p></a>
@@ -92,9 +82,9 @@
                     <div class ="card-pills">
                         <div>
                             <i class="pill icofont-like"></i>
-                            <p class ="pill likes-num">num</p>
+                            <p id="likes-num" class ="pill">num</p>
                             <i class="pill icofont-speech-comments"></i>
-                            <p class ="pill comments-num">num</p>
+                            <p id="comments-num"class ="pill">num</p>
                         </div>
                         <div>
                         <a href="" class="pill"><p> + more info</p></a>
@@ -102,39 +92,7 @@
                     </div>
                 </div>
             </div> 
-<!--
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                  <img class="activator" src="https://images.punkapi.com/v2/69.png">
-                </div>
-                <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4">Nombre cerveza<i class="material-icons right">more_vert</i></span>
-                  <p><a href="#">This is a link</a></p>
-                </div>
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4">Nombre cerveza<i class="material-icons right">close</i></span>
-                  <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                  <p>ingredientes.</p>
-                  <p>and so on</p>
-                </div>
-            </div>
 
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                  <img class="activator" src="https://images.punkapi.com/v2/keg.png">
-                </div>
-                <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4">Nombre cerveza<i class="material-icons right">more_vert</i></span>
-                  <p><a href="#">This is a link</a></p>
-                </div>
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4">Nombre cerveza<i class="material-icons right">close</i></span>
-                  <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                  <p>ingredientes.</p>
-                  <p>and so on</p>
-                </div>
-            </div>
--->
         </section>
 
     </main>
@@ -142,6 +100,6 @@
 
     </footer>
     
-    <script src="./js/navbar.js" type="module"></script>
+    <script src="./js/navbar.js" type="text/javascript"></script>
 </body>
 </html>
