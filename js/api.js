@@ -33,7 +33,8 @@ export const getBeers = async (query, limit = 10) => {
 
 
 export const getDetails = async id => {
-
+  const endpoint = "https://beerflix-api.herokuapp.com/api/v1/beers"
+  const URL = `${endpoint}/${id}/like`
 
 }
 /*
