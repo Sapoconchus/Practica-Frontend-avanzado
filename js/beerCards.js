@@ -11,8 +11,9 @@ const cardTemplate = beer => {
             <div class="info-container">
                 <div class = "beer-info">
                     <h1>${beer.name}</h1>
-                    <article>${beer.description}<span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
-                </div>
+                    <article class="first-rendered">${beer.description.length < 100 ? beer.description : beer.description.slice(0,100) + '... <span class="read-more">[read more]</span>'}.<span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
+                    <article class="expanded no-display scroll">${beer.description} <span class="read-more">[close]</span>.<span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
+                    </div>
                 <div class ="card-pills">
                     <div>
                         <i class="pill icofont-like"></i>
@@ -21,13 +22,13 @@ const cardTemplate = beer => {
                         <p id="comments-num"class ="pill">${beer.comments.length}</p>
                     </div>
                     <div>
+                    <p class="beer-id">${beer.beerId}</p>
                     <a href="/beers/${beer.beerId}" class="pill"><p> + more info</p></a>
                     </div>
                 </div>
             </div>
-        </div> 
-`;
-};
+        </div>`
+} 
 
 
 const renderBeers = async input => {
@@ -35,11 +36,20 @@ const renderBeers = async input => {
         const beers = await getBeers(input);
         const container = document.querySelector(".card-container");
         const htmlBeers = beers.map(beer => cardTemplate(beer)).join("");
-        container.innerHTML = `
-        <div class="card-container">
-        ${htmlBeers}
-        </div>
-        `;
+        container.innerHTML = `${htmlBeers}`;
+
+        const expand = document.querySelector(".read-more");
+        const firstArticle = document.querySelectorAll(".first-rendered");
+        const xpandArticle = document.querySelectorAll(".expanded");
+
+        expand.addEventListener("click", evt => {
+            console.log("click!");
+            firstArticle.classList.toggle("no-display");
+            xpandArticle.classList.toggle("no-display");  
+        })
+
+
+
     } catch (err) {
         console.log(err);
     }

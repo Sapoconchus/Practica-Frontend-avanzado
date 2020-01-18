@@ -27,3 +27,8 @@ a {
 .no-display {
     display: none;
 }
+
+.scroll {
+    overflow: visible;
+    /*overflow-x: hidden*/
+}

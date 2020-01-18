@@ -94,6 +94,16 @@ img {
     display: none;
 }
 
+.read-more {
+    color: gray;
+    font-size: 0.75rem;
+}
+
+.read-more:hover {
+    cursor: pointer;
+    color: gold;
+}
+
 @media all and (min-width: 400px) {
 
     .card-pills .icofont-speech-comments, #comments-num {

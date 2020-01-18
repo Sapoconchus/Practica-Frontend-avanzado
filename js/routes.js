@@ -8,4 +8,10 @@ page('/', () => {
     console.log("route");
     renderBeers(getItem(SEARCH_INPUT));
 });
+
+page('/beers/:id', ctxt => {
+    // renderBeerDetail(':id')
+    console.log(ctxt)
+    console.log(ctxt.path)
+})
 page();
