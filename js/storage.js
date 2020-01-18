@@ -9,10 +9,16 @@ const cookieStore = {
     getItem: key => cookies.get(key)
 };
 
+const sessionStore = {
+    setItem: (key, value) => sessionStorage.setItem(key, value),
+    getItem: key => sessionStorage.getItem(key)
+};
+
 
 const storage = (type = "locStore") => {
     const types = {
         locStore,
+        sessionStore,
         cookieStore
     };
     return types[type];

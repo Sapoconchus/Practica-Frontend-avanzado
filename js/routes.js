@@ -1,6 +1,7 @@
 import renderBeers from "./beerCards.js";
 import storage from './storage.js';
 import { SEARCH_INPUT } from './navbar.js';
+import { getDetails } from './api.js'
 
 const { getItem } = storage();
 
@@ -10,8 +11,8 @@ page('/', () => {
 });
 
 page('/beers/:id', ctxt => {
-    // renderBeerDetail(':id')
-    console.log(ctxt)
-    console.log(ctxt.path)
+    // renderBeerDetail('id')
+    getDetails(ctxt.path);
+
 })
 page();

@@ -33,8 +33,27 @@ export const getBeers = async (query, limit = 10) => {
 
 
 export const getDetails = async id => {
-  const endpoint = "https://beerflix-api.herokuapp.com/api/v1/beers"
-  const URL = `${endpoint}/${id}/like`
+  const endpoint = "https://beerflix-api.herokuapp.com/api/v1"
+  const URL = `${endpoint}${id}`
+
+  try {
+    const response = await fetch(URL, {
+      method: 'GET',
+      headers: {
+        'X-API-KEY': API_KEY
+      },
+    });
+
+    console.log(response)
+
+    const data = await response.json();
+
+    console.log(data);
+    
+  } catch (err) {
+    console.log(err);
+    throw error
+  }
 
 }
 /*
