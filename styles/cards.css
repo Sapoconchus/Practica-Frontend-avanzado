@@ -68,6 +68,12 @@ img {
 }
 .card-pills a {
     text-align: right;
+    text-decoration: none;
+    color: black
+}
+.card-pills a:hover {
+    color: yellow;
+    background-color: gray;
 }
 
 .card-pills p {
@@ -79,14 +85,8 @@ img {
     display: none;
 }
 
-.read-more {
+.brew-year {
     color: gray;
-    font-size: 0.75rem;
-}
-
-.read-more:hover {
-    cursor: pointer;
-    color: gold;
 }
 
 @media all and (min-width: 400px) {

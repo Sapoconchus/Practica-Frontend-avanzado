@@ -21,7 +21,6 @@ export const getBeers = async (query, limit = 10) => {
       const data = await response.json();
       //const beers = data.map(item => item.beers);
       const {beers} = data;
-      console.log(beers);
       return beers;
   
   }catch (err){
@@ -44,12 +43,10 @@ export const getDetails = async id => {
       },
     });
 
-    console.log(response)
-
     const data = await response.json();
+    const {beer} = data;
+    return beer;
 
-    console.log(data);
-    
   } catch (err) {
     console.log(err);
     throw error
