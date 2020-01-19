@@ -1,0 +1,127 @@
+.detail-wrapper, .comment-container, .comments-list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: hidden;
+	margin: auto 10px;
+	padding: 5px;
+	max-width: 600px;
+	align-self: center;
+}
+
+.detail-wrapper {
+	margin-bottom: 15px;
+	border-bottom: 2px dotted gold;
+}
+
+
+.img-container {
+	max-width: 70vw;
+	border: 2px solid blue;
+}
+
+.img-container img {
+	width: 100%;
+	margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.beer-header {
+	margin-bottom: 10px;
+}
+
+.beer-header h1 {
+	font-size: 2rem;
+	text-align: center;
+	font-weight: bold;
+	color: gold;
+	margin-bottom: 10px;
+	background-color: rgba(170, 170, 170, 0.1);
+}
+
+.underlying {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: baseline;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	border-bottom: 1px dotted gold;
+}
+
+.underlying .pill {
+	display: inline-block;
+}
+
+.underlying .price-tag {
+	background-color: rgba(234, 203, 0, 0,6);
+}
+
+.underlying .price-tag .price {
+	font-size: 2rem;
+}
+
+.more-info p {
+	margin-bottom: 10px;
+}
+
+.more-info .info-header{
+	font-weight: bold;
+}
+
+.ingredients-detail {
+	font-style: italic;
+	font-size: 0.9rem;
+	color: gray;
+}
+
+.comment-form {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	margin-bottom: 20px;
+}
+
+.comment-input label {
+	font-size: 1rem;
+	display: inline-block;
+	width: 100%;
+	text-align: right;
+	font-family: arial;
+	margin-bottom: 5px;
+}
+
+.comment-input textarea {
+	display: inline-block;
+	width: 96%;
+	min-height: 100px;
+	padding: 5px;
+	margin-bottom: 5px;
+
+}
+
+.comment-form .send-button {
+	display: inline-block;
+	width: 100%;
+	min-height: 50px;
+	padding: 5px;
+	font-size: 1.05rem;
+	border-radius: 5px;
+}
+.comment-form .send-button:hover {
+	cursor: pointer;
+	background-color: gold;
+	font-weight: bold;
+}
+
+
+.comments-list h2 {
+	font-size: 2rem;
+	font-family: arial;
+}
+
+@media all and (min-width:650px){
+
+/* que quede el cuerpo centrado en vez de pegado al margen izquierdo */
+}

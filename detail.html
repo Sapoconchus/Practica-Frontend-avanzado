@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Beerflix. Tu portal de cervezas artesanas.</title>
+    <link rel="stylesheet" type="text/css" href="./styles/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./styles/typography/icofont/icofont.css">
+    <link rel="stylesheet" type="text/css" href="./styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="./styles/detail.css">
+</head>
+<body>
+    <nav>
+         
+        <div id="nav-logo" class="logo no-display">
+            <a href="/">Beer<span>Flix</span></a>
+        </div>
+
+        <div class="search-bar">
+            <div class="filter-container">
+                <form id="search-form" class="filter-input no-display" novalidate>
+                   <button type="button" class="close">X</button>
+                   <input data-pattern-mismatch="Input invalid" required placeholder="sort your beers" class="input search" type="text">
+                    <button type="submit" class="button search">Go!</button>
+                </form>
+            </div>
+            <div class="navbar-icon">
+                <i class="icofont-search-1"></i>
+            </div>
+    
+        </div>   
+
+    </nav>
+    <header class="main-header">
+        <div class="header-container">
+            <picture>
+            <source srcset="./imgs/homer_fridge_bn_360.jpg 450w, ./imgs/homer_fridge_bn.jpg 450w" media="(max-width: 600px">
+            <source srcset="./imgs/mario_vaquerizo_bn_600.jpg 600w, ./imgs/mario_vaquerizo_bn.jpg 900w" media="(min-width: 601px">
+            <img src="./imgs/homer_fridge_bn.jpg" alt="Header background image">
+            </picture>
+        </div>
+        <h1 class="logo">Beer<span>Flix</span></h1>
+    </header>
+    <main>
+
+        <section class="detail-wrapper">
+       		<div class="img-container">
+       			<img src="https://images.punkapi.com/v2/keg.png">
+       		</div>	
+       		<header class="beer-header">
+       			<h1>Nombre cerveza</h1>
+       			<div class="underlying">
+               		<div class="social-info">
+                		<i class="pill icofont-like"></i>
+                    	<p class="pill likes-num">12</p>
+                    	<i class="pill icofont-speech-comments"></i>
+                    	<p class="pill comments-num">26</p>
+                	</div>
+                	<div class="price-tag">
+                		<h2 class="price">5€</h2>
+                	</div>
+       			</div>
+                <article>A light, crisp and bitter IPA brewed with English and American hops. A small batch brewed only once.</article>
+       		</header>
+       		<div class="more-info">
+       			<p class="beer-date"> <span class="info-header">Firstly brewed on: </span>09/2007</p>
+       			<p class="brewers-tip"><span class="info-header">Brewer tip: </span>The earthy and floral aromas from the hops can be overpowering. Drop a little Cascade in at the end of the boil to lift the profile with a bit of citrus.</p>
+       			<p class="ingredients"><span class="info-header">Ingredients:</span> malt (<span class="ingredients-detail">Maris Otter Extra Pale, Caramalt, Munich</span>), hops (<span class="ingredients-detail">Fuggles, First Gold, Cascade</span>)</p>      			
+       		</div>
+        </section>
+
+		<section class="comment-container">
+  			<form id="comment-form" class="comment-form" novalidate>
+    			<div class="comment-input">
+      				<label for="comment">Any comment? </br> Go ahead and let us know</label>
+      				<textarea required placeholder="Add your beer review here" form="comment-form" minlength=10 maxlength=250></textarea>
+    			</div>
+    			<button type="submit" class="send-button">Add comment</button>
+  			</form>
+  			<div class="comments-list">
+    			<h2>Last comments</h2>
+    			<div id="commentList">
+    			</div>
+  			</div>
+       </section>
+
+    </main>
+    <footer>
+
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+    <script src="./js/routes.js" type="module"></script>
+</body>
+</html>

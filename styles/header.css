@@ -12,7 +12,7 @@
 	z-index: 1;
 }
 
-header h1 {
+.main-header h1 {
 	position: absolute;
 	display: inline-block;
 	top: 20%;

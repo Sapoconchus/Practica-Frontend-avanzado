@@ -33,3 +33,7 @@ a {
     overflow: visible;
     /*overflow-x: hidden*/
 }
+
+p, article {
+    line-height: 1.2rem;
+}
