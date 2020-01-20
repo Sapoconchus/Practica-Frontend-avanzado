@@ -18,11 +18,12 @@
 .img-container {
 	max-width: 70vw;
 	border: 2px solid blue;
+	height: 100vh;
 }
 
-.img-container img {
-	width: 100%;
-	margin-left: auto;
+img {
+    height: 100%;
+    margin-left: auto;
     margin-right: auto;
     display: block;
 }
@@ -60,6 +61,10 @@
 
 .underlying .price-tag .price {
 	font-size: 2rem;
+}
+
+.more-info {
+	min-width: 315px;
 }
 
 .more-info p {

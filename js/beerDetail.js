@@ -3,11 +3,11 @@ import storage from './storage.js';
 
 const {setItem, getItem} = storage();
 
-const detailTemplate = ({name, likes, comments, description, firstBrewed, price, brewersTips} = {}, malt, hops) => {
+const detailTemplate = ({name, image, likes, comments, description, firstBrewed, price, brewersTips} = {}, malt, hops) => {
     return `
     <section class="detail-wrapper">
     <div class="img-container">
-        <img src="https://images.punkapi.com/v2/keg.png">
+        <img src="${image}">
     </div>	
     <header class="beer-header">
     <h1>${name}</h1>
@@ -15,7 +15,7 @@ const detailTemplate = ({name, likes, comments, description, firstBrewed, price,
         <div class="social-info">
          <i class="pill icofont-like"></i>
          <p class="pill likes-num">${likes}</p>
-         <i class="pill icofont-speech-comments"></i>
+         <label for="text-area"><i class="pill icofont-speech-comments"></i></label>
          <p class="pill comments-num">${comments.length}</p>
      </div>
      <div class="price-tag">
@@ -31,6 +31,16 @@ const detailTemplate = ({name, likes, comments, description, firstBrewed, price,
 </div>
 </section>
 <section class="comment-container">
+    <form id="comment-form" class="comment-form" novalidate>
+        <div class="comment-input">
+            <label for="text-area">Any comment? </br> Go ahead and let us know</label>
+            <textarea required id="text-area" placeholder="Add your beer review here" form="comment-form" minlength=10 maxlength=250></textarea>
+        </div>
+        <button type="submit" class="send-button">Add comment</button>
+    </form>
+    
+    <div class="comments-list">
+    </div>
 </section>
 `};
 
@@ -41,7 +51,7 @@ const renderDetails = async id => {
     const {ingredients: {malt, hops}} = detail;
 
     const maltList = malt.map(item => item.name);
-    const hopsList = getNamer(hops);
+    const hopsList = hops.map(item => item.name);
 
     const mainContainer = document.querySelector("main");    
 
@@ -50,25 +60,22 @@ const renderDetails = async id => {
     const thumbUp = document.querySelector(".icofont-like");
     const likesNum = document.querySelector(".likes-num")
 
-    if(getItem(id) !== "liked") {
-
-    thumbUp.addEventListener("click", evt => {
+    const liker = evt => {
         
-        addLike(id); //funciona. Ahora hay que refrescar el render cuando se haga.
-        thumbUp.classList.add("liked")
-        likesNum.innerText = parseInt(likesNum.innerText) + 1;
+    addLike(id); 
+    thumbUp.classList.add("liked")
+    likesNum.innerText = parseInt(likesNum.innerText) + 1;
+    thumbUp.removeEventListener('click', liker)
 
-        })
-
-    } else {
-        thumbUp.classList.add("liked")
-    };
+    }
+   
+    getItem(id) !== "liked" ?  thumbUp.addEventListener("click", liker) : thumbUp.classList.add("liked");
 
 };
 
 export default renderDetails;
 
-
+/*
 const getNamer = (array) => {
     
     const newArray = []
@@ -77,4 +84,4 @@ const getNamer = (array) => {
        newArray.push(` ${array[i].name}`)
     }
     return newArray;
-}
+}*/
