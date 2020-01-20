@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +11,10 @@
     <link rel="stylesheet" type="text/css" href="./styles/typography/icofont/icofont.css">
     <link rel="stylesheet" type="text/css" href="./styles/styles.css">
 </head>
+
 <body>
     <nav>
-         
+
         <div id="nav-logo" class="logo no-display">
             <a href="/">Beer<span>Flix</span></a>
         </div>
@@ -20,31 +22,44 @@
         <div class="search-bar">
             <div class="filter-container">
                 <form id="search-form" class="filter-input no-display" novalidate>
-                   <button type="button" class="close">X</button>
-                   <input data-pattern-mismatch="Input invalid" required placeholder="sort your beers" class="input search" type="text">
+                    <button type="button" class="close">X</button>
+                    <input data-pattern-mismatch="Input invalid" required placeholder="sort your beers"
+                        class="input search" type="text">
                     <button type="submit" class="button search">Go!</button>
                 </form>
             </div>
             <div class="navbar-icon">
                 <i class="icofont-search-1"></i>
             </div>
-    
-        </div>   
+
+        </div>
 
     </nav>
-    <header class ="main-header">
+    <header class="main-header">
         <div class="header-container">
             <picture>
-            <source srcset="/imgs/homer_fridge_bn_360.jpg 450w, /imgs/homer_fridge_bn.jpg 450w" media="(max-width: 600px">
-            <source srcset="/imgs/mario_vaquerizo_bn_600.jpg 600w, /imgs/mario_vaquerizo_bn.jpg 900w" media="(min-width: 601px">
-            <img src="/imgs/homer_fridge_bn.jpg" alt="Header background image">
+                <source srcset="/imgs/homer_fridge_bn_360.jpg 450w, /imgs/homer_fridge_bn.jpg 450w"
+                    media="(max-width: 600px">
+                <source srcset="/imgs/mario_vaquerizo_bn_600.jpg 600w, /imgs/mario_vaquerizo_bn.jpg 900w"
+                    media="(min-width: 601px">
+                <img src="/imgs/homer_fridge_bn.jpg" alt="Header background image">
             </picture>
         </div>
         <h1 class="logo">Beer<span>Flix</span></h1>
     </header c>
     <main>
- <!-- PARA EL FILTRO DE FECHA, PROPIEDAD INPUT TYPE="MONTH" (SOLO DEJA SELECCIONAR MES Y AÑO) -->
-        <section class= "card-container">
+        <!-- PARA EL FILTRO DE FECHA, PROPIEDAD INPUT TYPE="MONTH" (SOLO DEJA SELECCIONAR MES Y AÑO) -->
+        <div class="filters">
+            <h3> filters </h3>
+            <form class="date-form" novalidate>
+                <ul id="date-filter-input"> date picker
+                    
+                </ul>
+                <button type="submit" class="button search"> Filter! </button></li>
+                
+            </form>
+        </div>
+        <section class="card-container">
 
         </section>
 
@@ -56,4 +71,5 @@
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="./js/routes.js" type="module"></script>
 </body>
+
 </html>

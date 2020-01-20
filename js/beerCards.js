@@ -1,7 +1,7 @@
-import {getBeers} from "./api.js";
+import { getBeers } from "./api.js";
 import storage from './storage.js';
 
-const {setItem, getItem} = storage();
+const { setItem, getItem } = storage();
 
 const container = document.querySelector(".card-container")
 
@@ -14,7 +14,7 @@ const cardTemplate = beer => {
             <div class="info-container">
                 <div class = "beer-info">
                    <a href="/beers/${beer.beerId}"> <h1>${beer.name}</h1></a>
-                    <article class="first-rendered">${beer.description.length < 220 ? beer.description : beer.description.slice(0,220) + ' [...]'}.</br><span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
+                    <article class="first-rendered">${beer.description.length < 220 ? beer.description : beer.description.slice(0, 220) + ' [...]'}.</br><span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
                     <article class="expanded no-display scroll">${beer.beerId} <span class="read-more">[close]</span>.<span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
                     </div>
                 <div class ="card-pills">
@@ -30,11 +30,11 @@ const cardTemplate = beer => {
                 </div>
             </div>
         </div>`
-} 
+}
 
 
 const renderBeers = async input => {
-    try{
+    try {
         const beers = await getBeers(input);
 
         const container = document.querySelector(".card-container");
@@ -42,18 +42,40 @@ const renderBeers = async input => {
         const htmlBeers = beers.map(beer => {
             dates.push(beer.firstBrewed);
             return cardTemplate(beer);
-
-    }).join("");
+        }).join("");
 
         container.innerHTML = `${htmlBeers}`;
 
+        renderFilter(dates);
+
         console.log(dates);
+
+        const filterInput = document.querySelector(".date-form");
+        const checkbox = document.querySelector(".filter-checkbox");
+
+        filterInput.addEventListener("submit", evt => {
+           evt.preventDefault();
+
+                console.log(checkbox.value)
+            }
+        )
 
     } catch (err) {
         console.log(err);
     }
 };
 
+const filterTemplate = (input, index) => {
+    return `
+    <li><label><input class ="${index}" type="checkbox" name=${input} value=${input}> ${input}</label></li></br>`
+}
+
+const renderFilter = array => {
+    
+    const container = document.querySelector("#date-filter-input");
+    const checkBoxes = array.map((item, index) => filterTemplate(item, index)).join("");
+    container.innerHTML = `${checkBoxes}`;
+};
 
 export default renderBeers;
 

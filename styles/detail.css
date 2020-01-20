@@ -122,6 +122,10 @@ img {
 	font-family: arial;
 }
 
+.detail-wrapper .underlying .icofont-like:hover{
+	cursor: pointer;
+}
+
 @media all and (min-width:650px){
 
 /* que quede el cuerpo centrado en vez de pegado al margen izquierdo */
