@@ -4,7 +4,7 @@
 	height: 300px;
 	overflow: hidden;
 	position: relative;
-	top: 0;
+	top: 58px;
 }
 .header-container img {
 	width: 100vw;
@@ -15,12 +15,17 @@
 .main-header h1 {
 	position: absolute;
 	display: inline-block;
-	top: 20%;
+	top: 25%;
 	width: 100%;
 	text-align: center;
 	z-index: 2;
-	font-size: 4rem; /* meter lo de que aumente la fuente con el tamaño*/
+	font-size: calc(3rem + 3vw); /*try it out*/
 	z-index:2;
 	text-shadow: 2px 2px gray;
 
+}
+
+main {
+	position: relative;
+	top: 66px;
 }

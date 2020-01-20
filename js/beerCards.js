@@ -1,18 +1,21 @@
 import {getBeers} from "./api.js";
+import storage from './storage.js';
+
+const {setItem, getItem} = storage();
 
 const container = document.querySelector(".card-container")
 
 const cardTemplate = beer => {
     return `
-    <div class="beer-card">
+    <div class="beer-card" id="${beer.beerId}">
         <div class="beer-pic">
-            <img src="${beer.image}">
+            <a href="/beers/${beer.beerId}"><img src="${beer.image}"></a>
         </div>
             <div class="info-container">
                 <div class = "beer-info">
-                    <h1>${beer.name}</h1>
+                   <a href="/beers/${beer.beerId}"> <h1>${beer.name}</h1></a>
                     <article class="first-rendered">${beer.description.length < 220 ? beer.description : beer.description.slice(0,220) + ' [...]'}.</br><span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
-                    <article class="expanded no-display scroll">${beer.description} <span class="read-more">[close]</span>.<span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
+                    <article class="expanded no-display scroll">${beer.beerId} <span class="read-more">[close]</span>.<span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
                     </div>
                 <div class ="card-pills">
                     <div>
@@ -33,21 +36,18 @@ const cardTemplate = beer => {
 const renderBeers = async input => {
     try{
         const beers = await getBeers(input);
+
         const container = document.querySelector(".card-container");
-        const htmlBeers = beers.map(beer => cardTemplate(beer)).join("");
+        const dates = []
+        const htmlBeers = beers.map(beer => {
+            dates.push(beer.firstBrewed);
+            return cardTemplate(beer);
+
+    }).join("");
+
         container.innerHTML = `${htmlBeers}`;
 
-        const expand = document.querySelector(".read-more");
-        const firstArticle = document.querySelectorAll(".first-rendered");
-        const xpandArticle = document.querySelectorAll(".expanded");
-
-        expand.addEventListener("click", evt => {
-            console.log("click!");
-            firstArticle.classList.toggle("no-display");
-            xpandArticle.classList.toggle("no-display");  
-        })
-
-
+        console.log(dates);
 
     } catch (err) {
         console.log(err);
