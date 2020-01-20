@@ -1,4 +1,7 @@
-import {getDetails } from './api.js'
+import {getDetails, addLike } from './api.js'
+import storage from './storage.js';
+
+const {setItem, getItem} = storage();
 
 const detailTemplate = ({name, likes, comments, description, firstBrewed, price, brewersTips} = {}, malt, hops) => {
     return `
@@ -27,6 +30,8 @@ const detailTemplate = ({name, likes, comments, description, firstBrewed, price,
     <p class="ingredients"><span class="info-header">Ingredients:</span> malt (<span class="ingredients-detail">${malt} </span>), hops (<span class="ingredients-detail">${hops}</span>)</p>      			
 </div>
 </section>
+<section class="comment-container">
+</section>
 `};
 
 
@@ -35,12 +40,30 @@ const renderDetails = async id => {
     //console.log(detail);
     const {ingredients: {malt, hops}} = detail;
 
-    const maltList = getNamer(malt);
+    const maltList = malt.map(item => item.name);
     const hopsList = getNamer(hops);
 
     const mainContainer = document.querySelector("main");    
 
     mainContainer.innerHTML = detailTemplate(detail, maltList, hopsList);
+
+    const thumbUp = document.querySelector(".icofont-like");
+    const likesNum = document.querySelector(".likes-num")
+
+    if(getItem(id) !== "liked") {
+
+    thumbUp.addEventListener("click", evt => {
+        
+        addLike(id); //funciona. Ahora hay que refrescar el render cuando se haga.
+        thumbUp.classList.add("liked")
+        likesNum.innerText = parseInt(likesNum.innerText) + 1;
+
+        })
+
+    } else {
+        thumbUp.classList.add("liked")
+    };
+
 };
 
 export default renderDetails;

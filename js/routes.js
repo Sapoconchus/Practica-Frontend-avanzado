@@ -12,6 +12,7 @@ page('/', () => {
 
 page('/beers/:id', ctxt => {
     // renderBeerDetail('id')
+    console.log(ctxt)
     renderDetails(ctxt.path);
 
 })

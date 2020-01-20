@@ -1,3 +1,6 @@
+import storage from './storage.js';
+
+const {setItem, getItem} = storage();
 
 const API_KEY = "99EQ1ZG-SK9M3J0-NEZGPFS-KK42VJ3";
 
@@ -53,15 +56,16 @@ export const getDetails = async id => {
   }
 
 }
-/*
+
 export const addLike = async id => {
-  const endpoint = "https://beerflix-api.herokuapp.com/api/v1/beers"
-  const URL = `${endpoint}/${id}/like`
+  const endpoint = "https://beerflix-api.herokuapp.com/api/v1"
+  const URL = `${endpoint}${id}/like`
   const like = await fetch(URL, {
     method: 'POST',
     headers: {
       'X-API-KEY': API_KEY,
       'Content-type': 'application/json',
     }
-  }
-}*/
+  });
+  setItem(id, "liked")
+}
