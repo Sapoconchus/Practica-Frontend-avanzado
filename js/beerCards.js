@@ -53,10 +53,26 @@ const renderBeers = async input => {
         const filterInput = document.querySelector(".date-form");
         const checkbox = document.querySelectorAll("input[type=checkbox]");
         const beerCard = document.querySelectorAll(".beer-card");
-
+        const checkAll = document.querySelector(".check-all");
+        const uncheckAll = document.querySelector(".uncheck-all");
 
         checkbox.forEach((item, index) => item.addEventListener("click", evt => beerCard[index].classList.toggle("no-display")));
         
+        console.log(checkbox);
+
+        checkAll.addEventListener("click", evt =>{
+            checkbox.forEach((item, index) => {
+                if(!item.checked) { item.checked = true;};
+                beerCard[index].classList.remove("no-display");
+                });
+        });
+        uncheckAll.addEventListener("click", evt =>{
+            checkbox.forEach((item, index) => {
+                if(item.checked) { item.checked = false;};
+                beerCard[index].classList.add("no-display");
+                });
+        });
+
 
     } catch (err) {
         console.log(err);
