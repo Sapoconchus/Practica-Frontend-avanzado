@@ -3,10 +3,11 @@ import storage from './storage.js';
 const {setItem, getItem} = storage();
 
 const API_KEY = "99EQ1ZG-SK9M3J0-NEZGPFS-KK42VJ3";
+const endpoint = "https://beerflix-api.herokuapp.com/api/v1"
 
 export const getBeers = async (query, limit = 10) => {
-    const endpoint = "https://beerflix-api.herokuapp.com/api/v1/beers"
-    const URL = query ? `${endpoint}?search=${query}&limit=${limit}` : API_URL;
+  //  const endpoint = "https://beerflix-api.herokuapp.com/api/v1/beers"
+    const URL = query ? `${endpoint}/beers?search=${query}&limit=${limit}` : API_URL;
     
     try {
     
@@ -35,7 +36,7 @@ export const getBeers = async (query, limit = 10) => {
 
 
 export const getDetails = async id => {
-  const endpoint = "https://beerflix-api.herokuapp.com/api/v1"
+ // const endpoint = "https://beerflix-api.herokuapp.com/api/v1"
   const URL = `${endpoint}${id}`
 
   try {
@@ -58,9 +59,9 @@ export const getDetails = async id => {
 }
 
 export const addLike = async id => {
-  const endpoint = "https://beerflix-api.herokuapp.com/api/v1"
+ // const endpoint = "https://beerflix-api.herokuapp.com/api/v1"
   const URL = `${endpoint}${id}/like`
-  const like = await fetch(URL, {
+ try { const like = await fetch(URL, {
     method: 'POST',
     headers: {
       'X-API-KEY': API_KEY,
@@ -68,4 +69,30 @@ export const addLike = async id => {
     }
   });
   setItem(id, "liked")
+} catch (err) {
+  console.log(err);
+  throw error
+};
+
+}
+
+export const postComment = async (id, comment) => {
+//  const endpoint = "https://beerflix-api.herokuapp.com/api/v1"
+  const URL = `${endpoint}${id}/comment`;
+ try { const postComment = await fetch(URL, {
+    method: 'POST',
+    headers: {
+      'X-API-KEY': API_KEY,
+      'content-type': 'application/json',
+
+    },
+    body: JSON.stringify({
+      'comment': comment,
+    })
+  })
+} catch (err) {
+  console.log(err);
+  throw error;
+};
+
 }

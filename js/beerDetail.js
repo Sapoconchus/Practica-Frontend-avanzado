@@ -1,4 +1,4 @@
-import {getDetails, addLike } from './api.js'
+import {getDetails, addLike, postComment } from './api.js'
 import storage from './storage.js';
 
 const {setItem, getItem} = storage();
@@ -45,6 +45,7 @@ const detailTemplate = ({name, image, likes, comments, description, firstBrewed,
 `};
 
 
+
 const renderDetails = async id => {
     const detail = await getDetails(id);
     //console.log(detail);
@@ -56,6 +57,8 @@ const renderDetails = async id => {
     const mainContainer = document.querySelector("main");    
 
     mainContainer.innerHTML = detailTemplate(detail, maltList, hopsList);
+
+        // get and display likes
 
     const thumbUp = document.querySelector(".icofont-like");
     const likesNum = document.querySelector(".likes-num")
@@ -70,8 +73,43 @@ const renderDetails = async id => {
     }
    
     getItem(id) !== "liked" ?  thumbUp.addEventListener("click", liker) : thumbUp.classList.add("liked");
+        
+        // get and display comments
 
+    const comments = detail.comments;
+    console.log(comments);
+    console.log(comments.comment, comments.dateComment)
+    
+    renderComments(comments);
+
+    const postForm = document.querySelector('#comment-form');
+    const commentInput = document.querySelector('#text-area');
+
+    postForm.addEventListener('submit', evt => {
+        evt.preventDefault();
+        if(commentInput.validity.valid) {
+            postComment(id, commentInput.value)
+            renderDetails(id)
+        }
+
+    })
+    
 };
+
+const commentTemplate = comment => {
+    return `
+<p class="comment-date"> ${comment.dateComment} </p>
+<p class="comment-text"> ${comment.comment} </p>
+`;
+}
+
+const renderComments = array => {
+   const HTMLComments = array.map(comment => commentTemplate(comment));
+   const container = document.querySelector(".comments-list");
+
+   container.innerHTML = `${HTMLComments}`;
+
+}
 
 export default renderDetails;
 

@@ -49,8 +49,8 @@ const renderBeers = async input => {
         renderFilter(dates);
 
         console.log(dates);
-
-        const filterInput = document.querySelector(".date-form");
+        // filter by date
+      //  const filterInput = document.querySelector(".date-form");
         const checkbox = document.querySelectorAll("input[type=checkbox]");
         const beerCard = document.querySelectorAll(".beer-card");
         const checkAll = document.querySelector(".check-all");
