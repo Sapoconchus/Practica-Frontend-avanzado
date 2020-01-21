@@ -2,6 +2,7 @@
 @import "navbar.css";
 @import "header.css";
 @import "detail.css";
+@import "filters.css";
 
 /*cosas globales como tipografía y demás. Se hará */
 
@@ -45,19 +46,3 @@ p, article {
     /* animation ? */
 }
 
-.filters {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 40px;
-    border: 3px solid red;
-    padding: 5px;
-}
-
-.date-form {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    overflow: visible;
-    border: 2px solid blue;
-}

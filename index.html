@@ -48,16 +48,15 @@
         <h1 class="logo">Beer<span>Flix</span></h1>
     </header c>
     <main>
-        <!-- PARA EL FILTRO DE FECHA, PROPIEDAD INPUT TYPE="MONTH" (SOLO DEJA SELECCIONAR MES Y AÑO) -->
-        <div class="filters">
-            <h3> filters </h3>
-            <form class="date-form" novalidate>
-                <ul id="date-filter-input"> date picker
-                    
-                </ul>
-                <button type="submit" class="button search"> Filter! </button></li>
-                
-            </form>
+        <div class="filters-container">
+            <h3> filters: </h3>
+            <div class="filters">
+                <div class="date-filter"> 
+                    <button id="date-button-filter" class="open-filter"> first-brew<i>></i> </button>
+                    <ul id="date-filter-list" class="no-display"> </ul>
+                    <button class="close-filter no-display">close</i>
+                </div>
+            </div>   
         </div>
         <section class="card-container">
 

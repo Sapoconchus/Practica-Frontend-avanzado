@@ -6,6 +6,8 @@ const { setItem, getItem } = storage();
 
 export const SEARCH_INPUT = 'search_input';
 
+// NAVBAR UI --> manages navbar input and prints beers
+
 const input = document.querySelector(".input.search");
 const form = document.getElementById("search-form");
 const button = document.querySelector("button");
@@ -27,18 +29,30 @@ form.addEventListener("submit", evt => {
 	 evt.preventDefault();
 
 	if(input.validity.valid) {
-		//pintar cervezas
 		renderBeers(input.value);
 		setItem(SEARCH_INPUT, input.value)
 	}
 
 });
-/*
-const thumbUp = querySelectorAll(".icofont-like");
-const getid = querySelector(".beer-id")
-const id = getid.innerText;
 
+// FILTER UI --> manages beer filter behaviour @ home page
 
-thumbUp.addEventListener("click", evt => {
-    console.log(id)
-;})*/
+const listContainer = document.querySelector(".date-filter")
+const expand = document.querySelector(".open-filter");
+const close = document.querySelector(".close-filter");
+const list = document.querySelector("#date-filter-list");
+
+expand.addEventListener("click", evt => {
+	list.classList.toggle("no-display");
+	listContainer.classList.toggle("expand-list");
+	close.classList.toggle("no-display");
+	expand.classList.toggle("no-display");
+
+})
+
+close.addEventListener("click", evt => {
+	list.classList.toggle("no-display");
+	close.classList.toggle("no-display");
+	expand.classList.toggle("no-display");
+	listContainer.classList.toggle("expand-list");
+})

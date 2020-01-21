@@ -51,14 +51,12 @@ const renderBeers = async input => {
         console.log(dates);
 
         const filterInput = document.querySelector(".date-form");
-        const checkbox = document.querySelector(".filter-checkbox");
+        const checkbox = document.querySelectorAll("input[type=checkbox]");
+        const beerCard = document.querySelectorAll(".beer-card");
 
-        filterInput.addEventListener("submit", evt => {
-           evt.preventDefault();
 
-                console.log(checkbox.value)
-            }
-        )
+        checkbox.forEach((item, index) => item.addEventListener("click", evt => beerCard[index].classList.toggle("no-display")));
+        
 
     } catch (err) {
         console.log(err);
@@ -67,12 +65,12 @@ const renderBeers = async input => {
 
 const filterTemplate = (input, index) => {
     return `
-    <li><label><input class ="${index}" type="checkbox" name=${input} value=${input}> ${input}</label></li></br>`
+    <li><label><input class ="${index}" type="checkbox" name=${input} value=${input} checked> ${input}</label></li></br>`
 }
 
 const renderFilter = array => {
     
-    const container = document.querySelector("#date-filter-input");
+    const container = document.querySelector("#date-filter-list");
     const checkBoxes = array.map((item, index) => filterTemplate(item, index)).join("");
     container.innerHTML = `${checkBoxes}`;
 };
