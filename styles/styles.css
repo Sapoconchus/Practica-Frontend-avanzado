@@ -3,8 +3,13 @@
 @import "header.css";
 @import "detail.css";
 @import "filters.css";
+@import "loader.css";
 
 /*cosas globales como tipografía y demás. Se hará */
+
+* {
+    box-sizing: border-box;
+}
 
 .logo {
     font-family: 'Baloo Bhaina', cursive;

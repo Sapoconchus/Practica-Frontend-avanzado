@@ -7,7 +7,6 @@ const container = document.querySelector(".card-container")
 
 const cardTemplate = beer => {
     return `
-    <section class="card-container">
     <div class="beer-card" id="${beer.beerId}">
         <div class="beer-pic">
             <a href="/beers/${beer.beerId}"><img src="${beer.image}"></a>
@@ -15,7 +14,7 @@ const cardTemplate = beer => {
             <div class="info-container">
                 <div class = "beer-info">
                    <a href="/beers/${beer.beerId}"> <h1>${beer.name}</h1></a>
-                    <article class="first-rendered">${beer.description.length < 220 ? beer.description : beer.description.slice(0, 220) + ' [...]'}.</br><span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
+                    <article class="first-rendered">${beer.description.length < 180 ? beer.description : beer.description.slice(0, 165) + ' [...]'}.</br><span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
                     <article class="expanded no-display scroll">${beer.beerId} <span class="read-more">[close]</span>.<span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
                     </div>
                 <div class ="card-pills">
@@ -26,12 +25,11 @@ const cardTemplate = beer => {
                         <p id="comments-num"class ="pill">${beer.comments.length}</p>
                     </div>
                     <div>
-                    <a href="/beers/${beer.beerId}" class="pill"><p> + more info</p></a>
+                    <a href="/beers/${beer.beerId}" class="pill"><p> Go to details </p></a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>`
+        </div>`
 }
 
 
@@ -39,20 +37,23 @@ const renderBeers = async input => {
     try {
         const beers = await getBeers(input);
 
-        const container = document.querySelector("main");
+        const main = document.querySelector("main");
         const dates = []
         const htmlBeers = beers.map(beer => {
             dates.push(beer.firstBrewed);
             return cardTemplate(beer);
         }).join("");
 
-        container.innerHTML = `${htmlBeers}`;
+        const cardContainer = document.createElement("section")
+        cardContainer.classList.add("card-container");
+
+        cardContainer.innerHTML = `${htmlBeers}`;
+        main.appendChild(cardContainer);
 
         renderFilter(dates);
 
-        console.log(dates);
         // filter by date
-      //  const filterInput = document.querySelector(".date-form");
+   
         const checkbox = document.querySelectorAll("input[type=checkbox]");
         const beerCard = document.querySelectorAll(".beer-card");
         const checkAll = document.querySelector(".check-all");

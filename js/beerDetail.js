@@ -31,11 +31,12 @@ const detailTemplate = ({name, image, likes, comments, description, firstBrewed,
 </div>
 </section>
 <section class="comment-container">
-    <form id="comment-form" class="comment-form" novalidate>
+    <form id="comment-form" class="comment-form">
         <div class="comment-input">
             <label for="text-area">Any comment? </br> Go ahead and let us know</label>
             <textarea required id="text-area" placeholder="Add your beer review here" form="comment-form" minlength=10 maxlength=250></textarea>
         </div>
+        <div class="lds-ellipsis no-display"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         <button type="submit" class="send-button">Add comment</button>
     </form>
     
@@ -87,12 +88,14 @@ const renderDetails = async id => {
 
     const postForm = document.querySelector('#comment-form');
     const commentInput = document.querySelector('#text-area');
+    const loader = document.querySelector(".lds-ellipsis");
 
     postForm.addEventListener('submit', async evt => {
         evt.preventDefault();
         if(commentInput.validity.valid) {
-           await postComment(id, commentInput.value)
-            renderDetails(id)
+           loader.classList.toggle("no-display") 
+           await postComment(id, commentInput.value);
+           renderDetails(id); 
         }
 
     })
