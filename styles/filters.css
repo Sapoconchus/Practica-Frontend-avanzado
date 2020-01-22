@@ -2,9 +2,15 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 40px;
+   /* height: 40px;
     padding: 5px;
-    margin: 0 5px 25px 5px;
+    margin: 0 5px 25px 5px;*/
+   padding: 5px 10px;
+
+    position: relative;
+    top: 58px;
+    z-index: 22;
+    background-color: rgba(212, 175, 55, 0.1)
 }
 
 .filters-container h3 {
@@ -17,6 +23,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
     border: 1px dotted gray;
     padding: 5px;
     min-height: 25px;
@@ -26,7 +33,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    max-width: 100px;
+   /* min-width: 120px;*/
     
 }
 
@@ -35,4 +42,16 @@
     overflow: scroll;
     overflow-x: hidden;
     background-color: white;
+
+}
+
+.check-uncheck {
+    font-size: 0.75rem;
+    color: gray;
+    margin-bottom: 2px;
+}
+
+.check-all:hover, .uncheck-all:hover {
+    color: gold;
+    cursor: pointer;
 }

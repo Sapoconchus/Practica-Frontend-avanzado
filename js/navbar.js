@@ -30,6 +30,7 @@ form.addEventListener("submit", evt => {
 
 	if(input.validity.valid) {
 		renderBeers(input.value);
+		window.location.replace("/");
 		setItem(SEARCH_INPUT, input.value)
 	}
 
@@ -39,20 +40,20 @@ form.addEventListener("submit", evt => {
 
 const listContainer = document.querySelector(".date-filter")
 const expand = document.querySelector(".open-filter");
-const close = document.querySelector(".close-filter");
+//const close = document.querySelector(".close-filter");
 const list = document.querySelector("#date-filter-list");
 
 expand.addEventListener("click", evt => {
 	list.classList.toggle("no-display");
 	listContainer.classList.toggle("expand-list");
-	close.classList.toggle("no-display");
-	expand.classList.toggle("no-display");
+	//close.classList.toggle("no-display");
+	//expand.classList.toggle("no-display");
 
 })
-
+/*
 close.addEventListener("click", evt => {
 	list.classList.toggle("no-display");
 	close.classList.toggle("no-display");
 	expand.classList.toggle("no-display");
 	listContainer.classList.toggle("expand-list");
-})
+})*/

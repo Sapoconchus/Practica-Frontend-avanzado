@@ -46,3 +46,7 @@ p, article {
     /* animation ? */
 }
 
+button:hover {
+    cursor: pointer;
+}
+

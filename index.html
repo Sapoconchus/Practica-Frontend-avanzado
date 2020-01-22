@@ -14,7 +14,6 @@
 
 <body>
     <nav>
-
         <div id="nav-logo" class="logo no-display">
             <a href="/">Beer<span>Flix</span></a>
         </div>
@@ -23,7 +22,7 @@
             <div class="filter-container">
                 <form id="search-form" class="filter-input no-display" novalidate>
                     <button type="button" class="close">X</button>
-                    <input data-pattern-mismatch="Input invalid" required placeholder="sort your beers"
+                    <input data-pattern-mismatch="Input invalid" href="/" required placeholder="sort your beers"
                         class="input search" type="text">
                     <button type="submit" class="button search">Go!</button>
                 </form>
@@ -33,11 +32,10 @@
             </div>
 
         </div>
-
     </nav>
     <header class="main-header">
         <div class="header-container">
-            <picture>
+           <picture>
                 <source srcset="/imgs/homer_fridge_bn_360.jpg 450w, /imgs/homer_fridge_bn.jpg 450w"
                     media="(max-width: 600px">
                 <source srcset="/imgs/mario_vaquerizo_bn_600.jpg 600w, /imgs/mario_vaquerizo_bn.jpg 900w"
@@ -45,23 +43,21 @@
                 <img src="/imgs/homer_fridge_bn.jpg" alt="Header background image">
             </picture>
         </div>
-        <h1 class="logo">Beer<span>Flix</span></h1>
-    </header>
-    <main>
+         <a href="/"><h1 class="logo">Beer<span>Flix</span></h1></a>
         <div class="filters-container">
             <h3> filters: </h3>
             <div class="filters">
                 <div class="date-filter"> 
                     <button id="date-button-filter" class="open-filter"> first-brew<i>></i> </button>
-                    <p class="check-uncheck"><span class="check-all">check</span>/<span class="uncheck-all">uncheck</span>all</p>
-                    <ul id="date-filter-list" class="no-display"> </ul>
-                    <button class="close-filter no-display">close</i>
+                    <div id="date-filter-list" class="no-display">
+                        <p class="check-uncheck"><span class="check-all">check all</span>/<span class="uncheck-all"> uncheck all</span></p>
+                    <!--    <button class="close-filter no-display"> close </button> -->
+                    </div>
                 </div>
             </div>   
         </div>
-        <section class="card-container">
-
-        </section>
+    </header>
+    <main>
 
     </main>
     <footer>

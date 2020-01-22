@@ -52,11 +52,14 @@ const renderDetails = async id => {
     const {ingredients: {malt, hops}} = detail;
 
     const maltList = malt.map(item => item.name);
-    const hopsList = hops.map(item => item.name);
+    const maltFiltered = [...new Set(maltList)].join(", "); //cool!
+    const hopsList = hops.map(item => item.name).sort(); //can't chain the filter, throws an error ("It is not initializated")
+    const hopsFiltered = hopsList.filter((item,i) => hopsList.indexOf(item) == i).join(", ");
+
 
     const mainContainer = document.querySelector("main");    
 
-    mainContainer.innerHTML = detailTemplate(detail, maltList, hopsList);
+    mainContainer.innerHTML = detailTemplate(detail, maltFiltered, hopsFiltered);
 
         // get and display likes
 
@@ -85,10 +88,10 @@ const renderDetails = async id => {
     const postForm = document.querySelector('#comment-form');
     const commentInput = document.querySelector('#text-area');
 
-    postForm.addEventListener('submit', evt => {
+    postForm.addEventListener('submit', async evt => {
         evt.preventDefault();
         if(commentInput.validity.valid) {
-            postComment(id, commentInput.value)
+           await postComment(id, commentInput.value)
             renderDetails(id)
         }
 
@@ -98,13 +101,15 @@ const renderDetails = async id => {
 
 const commentTemplate = comment => {
     return `
-<p class="comment-date"> ${comment.dateComment} </p>
+<div class="single-comment">        
+<p class="comment-date"> <span class="date">${new Date(comment.dateComment).getDate()}/${new Date(comment.dateComment).getMonth()+1}/${new Date(comment.dateComment).getFullYear()} </span><span class="comment-time">${new Date(comment.dateComment).getHours()}:${new Date(comment.dateComment).getMinutes()}</span></p>
 <p class="comment-text"> ${comment.comment} </p>
+</div>
 `;
 }
 
 const renderComments = array => {
-   const HTMLComments = array.map(comment => commentTemplate(comment));
+   const HTMLComments = array.map(comment => commentTemplate(comment)).join("");
    const container = document.querySelector(".comments-list");
 
    container.innerHTML = `${HTMLComments}`;

@@ -116,15 +116,45 @@ img {
 	font-weight: bold;
 }
 
+.comments-list {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+}
 
 .comments-list h2 {
 	font-size: 2rem;
 	font-family: arial;
 }
 
+.single-comment {
+	border-bottom: 1px dotted gray;
+	margin: 10px auto;
+	display: block;
+	width: 100%;
+
+}
+
+.single-comment p {
+	text-align: right;
+	margin-bottom: 5px;
+}
+
+.single-comment .comment-time {
+	font-size: 0.75rem;
+	color: gray;
+}
+
+.single-comment .comment-text {
+	font-size: 1.1rem;
+	text-align: justify;
+}
+
 .detail-wrapper .underlying .icofont-like:hover{
 	cursor: pointer;
 }
+
+.
 
 @media all and (min-width:650px){
 

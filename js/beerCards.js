@@ -7,6 +7,7 @@ const container = document.querySelector(".card-container")
 
 const cardTemplate = beer => {
     return `
+    <section class="card-container">
     <div class="beer-card" id="${beer.beerId}">
         <div class="beer-pic">
             <a href="/beers/${beer.beerId}"><img src="${beer.image}"></a>
@@ -29,7 +30,8 @@ const cardTemplate = beer => {
                     </div>
                 </div>
             </div>
-        </div>`
+        </div>
+    </section>`
 }
 
 
@@ -37,7 +39,7 @@ const renderBeers = async input => {
     try {
         const beers = await getBeers(input);
 
-        const container = document.querySelector(".card-container");
+        const container = document.querySelector("main");
         const dates = []
         const htmlBeers = beers.map(beer => {
             dates.push(beer.firstBrewed);
@@ -88,7 +90,9 @@ const renderFilter = array => {
     
     const container = document.querySelector("#date-filter-list");
     const checkBoxes = array.map((item, index) => filterTemplate(item, index)).join("");
-    container.innerHTML = `${checkBoxes}`;
+    const list = document.createElement("ul");
+    list.innerHTML = `${checkBoxes} <button class="close-filter no-display"> close </button>`;
+    container.appendChild(list);
 };
 
 export default renderBeers;

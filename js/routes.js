@@ -7,11 +7,12 @@ import { getDetails } from './api.js';
 const { getItem } = storage();
 
 page('/', () => {
+	document.querySelector(".filters-container").classList.remove("no-display")
     renderBeers(getItem(SEARCH_INPUT));
 });
 
 page('/beers/:id', ctxt => {
-    // renderBeerDetail('id')
+    document.querySelector(".filters-container").classList.add("no-display")
     renderDetails(ctxt.path);
 
 })
