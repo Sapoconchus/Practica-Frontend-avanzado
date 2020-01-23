@@ -48,8 +48,8 @@ const renderBeers = async input => {
         cardContainer.classList.add("card-container");
 
         cardContainer.innerHTML = `${htmlBeers}`;
-        main.appendChild(cardContainer);
-
+       main.appendChild(cardContainer);
+        // main.innerHTML = `${cardContainer}`;
         renderFilter(dates);
 
         // filter by date

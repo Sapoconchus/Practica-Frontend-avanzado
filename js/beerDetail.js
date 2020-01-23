@@ -112,7 +112,7 @@ const commentTemplate = comment => {
 }
 
 const renderComments = array => {
-   const HTMLComments = array.map(comment => commentTemplate(comment)).join("");
+   const HTMLComments = array.slice(0).reverse().map(comment => commentTemplate(comment)).join("");
    const container = document.querySelector(".comments-list");
 
    container.innerHTML = `${HTMLComments}`;

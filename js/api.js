@@ -95,4 +95,46 @@ export const postComment = async (id, comment) => {
   throw error;
 };
 
+};
+
+export const userRegister = async (name, email) => {
+  const URL = `${endpoint}/user/register`;
+  try{
+    const user = await fetch(URL, {
+      method: 'POST',
+      headers: {
+        'X-API-KEY': API_KEY,
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        name.
+        email,
+      })
+    })
+
+  } catch (err) {
+    console.log(err);
+    throw error;
+  }
+};
+
+export const getUser = async email => {
+  const URL = `${endpoint}/user/login`;
+  try {
+    const user = await fetch(URL, {
+      method: 'POST',
+      headers: {
+        'X-API-KEY': API_KEY,
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        email,
+      })
+    })
+
+  } catch (err) {
+    console.log(err);
+    throw error;
+  }
 }
+
