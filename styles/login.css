@@ -8,14 +8,10 @@
 	min-width: 320px;
 	background-color: gray;
 }
-
+/*
 .login-container .logo-container {
 	margin-bottom: 1.5rem;
 	flex: 0 1 50%;
-}
-
-.logo-container > img {
-	width: 100%;
 }
 
 .intro-message{
@@ -49,7 +45,7 @@ p > strong {
 }
 
 input, label {
-/*	border: 1px dotted gray;*/
+
 	display: block;
 	width: 100%;
 	font-size: 1.20rem;
@@ -118,4 +114,4 @@ button {
 		visibility: hidden;
 	}
 
-}
+}*/

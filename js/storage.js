@@ -5,8 +5,8 @@ const localStore = {
 };
 
 const cookieStore = {
-    setItem: (key, value) => cookies.set(key, value),
-    getItem: key => cookies.get(key)
+    setItem: (key, value) => Cookies.set(key, value),
+    getItem: key => Cookies.get(key)
 };
 
 const sessionStore = {

@@ -1,7 +1,7 @@
 import storage from './storage.js';
 import renderBeers from './beerCards.js';
 import { SEARCH_INPUT } from './navbar.js';
-import { userRegister } from './api.js';
+import { userRegister, getUser } from './api.js';
 
 const cookie = storage("cookieStore");
 const session = storage("sessionStore");
@@ -26,7 +26,7 @@ const logInDialog = `
 					<button type="submit">Adelante!</button>
 				</form>
 				<form id="login-form" class="no-display">
-					<label for="logemail"> e-mail </label>
+					<label for="log-email"> e-mail </label>
 					<input name="email" id="log-email" class="email" type="email" placeholder="e-mail" required></input>
 					<button type="submit">Adelante!</button>
 				</form>
@@ -42,35 +42,54 @@ const renderLogin = () => {
 	container.innerHTML = logInDialog;
 
 	const registerForm = document.querySelector('#register-form')
-	const loginForm = document.querySelector("#login-form");
 	const userName = document.querySelector("#username");
-	const regEmail = document.querySelector("#reg-email")
+	const regEmail = document.querySelector("#reg-email");
+
+	const loginForm = document.querySelector("#login-form");
+	const logEmail = document.querySelector("#log-email");
+	
+	const changeForm = document.querySelector(".form-changer");
 	//const email = document.querySelectorAll(".email");
 
 	registerForm.addEventListener('submit', evt => {
 		evt.preventDefault();
 		if(userName.validity.valid && regEmail.validity.valid) {
 			userRegister(username.value, regEmail.value)
-			session.setItem(regEmail.name, regEmail.value)
+			cookie.setItem(regEmail.name, regEmail.value, 365)
 			container.innerHTML = "";
-			renderBeers(local.getItem(SEARCH_INPUT));
+			window.alert("user correctly created! Now you will be redirected to the home page")
+			renderBeers("pale"/*local.getItem(SEARCH_INPUT)*/);
 			document.querySelector(".filters-container").classList.remove("no-display")
 		};
 	})	
 
-/*
-	loginForm.addEventListener('submit', evt => {
-		evt.preventDefault();
-		if(userName.validity.valid && email.validity.valid) {
+	changeForm.addEventListener('click', evt =>{
+		registerForm.classList.toggle("no-display");
+		loginForm.classList.toggle("no-display");
 
-			//setItem(userName.name, username.value);
-			session.setItem(email.name, email.value)
+	})
+
+	loginForm.addEventListener('submit', async evt => {
+		evt.preventDefault();
+
+		if(logEmail.validity.valid) {
+
+			const apiUser = await getUser(logEmail.value);
+			const { email } = apiUser
+
+			if (email === logEmail.value) {			
+			//llamar a getUser y comprobar si existe
+     		cookie.setItem(logEmail.name, logEmail.value, 365)
 			container.innerHTML = "";
-			renderBeers(local.getItem(SEARCH_INPUT));
-			document.querySelector(".filters-container").classList.remove("no-display")
-		};
-	})*/	
-}
+			renderBeers("pale"/*local.getItem(SEARCH_INPUT)*/);
+			document.querySelector(".filters-container").classList.remove("no-display");
+			} else {
+				console.error("user not found");
+				window.alert("User unknown. Please register.")
+			};
+		};	
+	});
+};
 
 export default renderLogin;
 

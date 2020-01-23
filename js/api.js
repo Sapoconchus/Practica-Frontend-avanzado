@@ -121,7 +121,7 @@ export const userRegister = async (name, email) => {
 export const getUser = async email => {
   const URL = `${endpoint}/user/login`;
   try {
-    const user = await fetch(URL, {
+    const response = await fetch(URL, {
       method: 'POST',
       headers: {
         'X-API-KEY': API_KEY,
@@ -131,6 +131,11 @@ export const getUser = async email => {
         email,
       })
     })
+    
+    const data = await response.json();
+    const user = data.user;
+
+    return user;
 
   } catch (err) {
     console.log(err);
