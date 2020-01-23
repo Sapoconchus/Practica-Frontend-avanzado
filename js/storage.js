@@ -1,5 +1,5 @@
 
-const locStore = {
+const localStore = {
     setItem: (key, value) => localStorage.setItem(key, value),
     getItem: key => localStorage.getItem(key)
 };
@@ -15,9 +15,9 @@ const sessionStore = {
 };
 
 
-const storage = (type = "locStore") => {
+const storage = (type = "localStore") => {
     const types = {
-        locStore,
+        localStore,
         sessionStore,
         cookieStore
     };

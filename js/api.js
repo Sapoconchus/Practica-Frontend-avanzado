@@ -107,7 +107,7 @@ export const userRegister = async (name, email) => {
         'content-type': 'application/json'
       },
       body: JSON.stringify({
-        name.
+        name,
         email,
       })
     })
