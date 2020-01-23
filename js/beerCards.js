@@ -15,21 +15,21 @@ const cardTemplate = beer => {
                 <div class = "beer-info">
                    <a href="/beers/${beer.beerId}"> <h1>${beer.name}</h1></a>
                     <article class="first-rendered">${beer.description.length < 180 ? beer.description : beer.description.slice(0, 165) + ' [...]'}.</br><span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
-                    <article class="expanded no-display scroll">${beer.beerId} <span class="read-more">[close]</span>.<span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
-                    </div>
+                </div>
                 <div class ="card-pills">
                     <div>
                         <i class="pill icofont-like"></i>
                         <p id="likes-num" class ="pill">${beer.likes}</p>
                         <i class="pill icofont-speech-comments"></i>
-                        <p id="comments-num"class ="pill">${beer.comments.length}</p>
+                        <p id="comments-num" class ="pill">${beer.comments.length}</p>
                     </div>
                     <div>
                     <a href="/beers/${beer.beerId}" class="pill"><p> Go to details </p></a>
                     </div>
                 </div>
             </div>
-        </div>`
+        </div>
+    </div>`
 }
 
 

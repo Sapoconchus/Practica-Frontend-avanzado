@@ -133,9 +133,8 @@ export const getUser = async email => {
     })
     
     const data = await response.json();
-    const user = data.user;
-
-    return user;
+console.log(data)
+    return data;
 
   } catch (err) {
     console.log(err);

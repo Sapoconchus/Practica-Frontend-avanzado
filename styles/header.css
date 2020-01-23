@@ -15,7 +15,7 @@
 .main-header h1 {
 	position: absolute;
 	display: inline-block;
-	top: 35%;
+	top: 25%; /*35% en el pc de la oficina, puede ser??*/
 	width: 100%;
 	text-align: center;
 	z-index: 2;

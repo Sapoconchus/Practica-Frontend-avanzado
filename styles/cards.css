@@ -68,7 +68,7 @@ color: gold;
 }
 
 .card-pills .pill {
-    padding: 3px;
+    padding: 2px;
     display: inline-block;
 }
 .card-pills a {
@@ -80,7 +80,7 @@ color: gold;
     color: gray;
     background-color: rgba(255, 217, 0, 0.328);
 }
-
+/*
 .card-pills p {
     margin-right: 10px;
     text-align: left;
@@ -88,7 +88,7 @@ color: gold;
 
 .card-pills .icofont-speech-comments, #comments-num {
     display: none;
-}
+}*/
 
 .brew-year {
     color: gray;

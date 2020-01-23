@@ -5,20 +5,28 @@ import renderDetails from "./beerDetail.js";
 import { getDetails } from './api.js';
 import renderLogin from './login.js';
 
-const { getItem } = storage();
+const local = storage('localStore');
+const cookie = storage('cookieStore');
 
 page('/', () => {
-	//if user exists username && password (API call)
-		//document.querySelector(".filters-container").classList.remove("no-display")
-    	//renderBeers(getItem(SEARCH_INPUT));
-    //if user doesn´t exist -> render login
-    renderLogin();
+
+    if(cookie.getItem("user_key")){
+        document.querySelector(".filters-container").classList.remove("no-display");
+        document.querySelector("main").innerHTML = "";
+        renderBeers(local.getItem(SEARCH_INPUT));
+    } else {
+        renderLogin();
+    }
+    
 });
 
 page('/beers/:id', ctxt => {
-	//if user exists
+	if(cookie.getItem("user_key")){
     document.querySelector(".filters-container").classList.add("no-display")
     renderDetails(ctxt.path);
-    //if user doesn´t exist -> render login
-})
+    } else {
+        renderLogin()
+    }
+});
+
 page();

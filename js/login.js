@@ -13,27 +13,30 @@ const logInDialog = `
 				<h1 class="logo"> Beer<span>Flix</span></h1>
 			</div>
 			<div class="intro-message">
-				<p> Nuestra plataforma funciona sólo con usuarios registrados. Por favor, date de alta en este formulario. si ya estás registrado, puedes acceder <span class="form-changer"> aquí </span></p>	
-				<p><strong>Ponte cómodo, outsider. Este es tu sitio.</strong></p>
-			</div>
-			<p class="form-changer"> Ya estoy registrado </p>
+				<p> Our network is available only for registered and authorized users. Please leave your name and e-mail and we'll provide you and account user and password.</p>
+				<p class="changer-paragraph"> Are you already registered?</br> <span class="form-changer"> Sign up / log in </span></p>
+			
+				</div>
+			
 			<div class="form-container">
 				<form id="register-form" class="register">
+					<h2> Register form </h2>
 					<label for="username"> Username </label>
-					<input name="username" id="username" type="text" placeholder="username o e-mail" required></input>
+					<input name="username" id="username" type="text" placeholder="username" required></input>
 					<label for="email"> e-mail </label>
 					<input name="email" id="reg-email" class="email" type="email" placeholder="e-mail" required></input>
-					<button type="submit">Adelante!</button>
+					<button type="submit">Submit</button>
 				</form>
-				<form id="login-form" class="no-display">
+				<form id="login-form" class="login no-display">
+					<h2> Login form </h2>
 					<label for="log-email"> e-mail </label>
 					<input name="email" id="log-email" class="email" type="email" placeholder="e-mail" required></input>
-					<button type="submit">Adelante!</button>
+					<button type="submit">Submit</button>
 				</form>
 			</div>
 			<div class="problem-logging">
-			<a href="">¿No recuerdas tu contraseña?</a>
-			<a href="">Reporta un problema</a>
+			<a href="">Forgot password?</a>
+			<a href="">Report an issue</a>
 			</div>
 		</div>`;
 
@@ -49,7 +52,6 @@ const renderLogin = () => {
 	const logEmail = document.querySelector("#log-email");
 	
 	const changeForm = document.querySelector(".form-changer");
-	//const email = document.querySelectorAll(".email");
 
 	registerForm.addEventListener('submit', evt => {
 		evt.preventDefault();
@@ -57,9 +59,7 @@ const renderLogin = () => {
 			userRegister(username.value, regEmail.value)
 			cookie.setItem(regEmail.name, regEmail.value, 365)
 			container.innerHTML = "";
-			window.alert("user correctly created! Now you will be redirected to the home page")
-			renderBeers("pale"/*local.getItem(SEARCH_INPUT)*/);
-			document.querySelector(".filters-container").classList.remove("no-display")
+			window.alert("user correctly created! Now you can proceed to log in")
 		};
 	})	
 
@@ -75,13 +75,16 @@ const renderLogin = () => {
 		if(logEmail.validity.valid) {
 
 			const apiUser = await getUser(logEmail.value);
-			const { email } = apiUser
 
-			if (email === logEmail.value) {			
+			const {user: {apiKey}} = apiUser;
+			
+
+			if (apiUser.success) {			
 			//llamar a getUser y comprobar si existe
-     		cookie.setItem(logEmail.name, logEmail.value, 365)
+			cookie.setItem(logEmail.name, logEmail.value, 365)
+			cookie.setItem("user_key", apiKey) 
 			container.innerHTML = "";
-			renderBeers("pale"/*local.getItem(SEARCH_INPUT)*/);
+			renderBeers(local.getItem(SEARCH_INPUT));
 			document.querySelector(".filters-container").classList.remove("no-display");
 			} else {
 				console.error("user not found");
@@ -93,8 +96,4 @@ const renderLogin = () => {
 
 export default renderLogin;
 
-//1. meter la info de login en cookieStorage
 	//1.1 si le da a recordar a cookieStorage, si no a sessionStorage (y cuando refresque, otra vez) 
-//2. on submit, lanzar renderBeers
-
-//3. intentar hacer un diálogo aparte para registrarse
