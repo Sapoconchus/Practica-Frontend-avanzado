@@ -13,17 +13,17 @@ const cardTemplate = beer => {
         </div>
             <div class="info-container">
                 <div class = "beer-info">
-                   <a href="/beers/${beer.beerId}"> <h1>${beer.name}</h1></a>
-                    <article class="first-rendered">${beer.description.length < 180 ? beer.description : beer.description.slice(0, 165) + ' [...]'}.</br><span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
+                   <a href="/beers/${beer.beerId}"> <h1 id="beer-name">${beer.name}</h1></a>
+                    <article class="first-rendered">${beer.description.length < 170 ? beer.description : beer.description.slice(0, 170) + ' [...]'}.</br><span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
                 </div>
                 <div class ="card-pills">
-                    <div>
+                    <div id="social-pills">
                         <i class="pill icofont-like"></i>
-                        <p id="likes-num" class ="pill">${beer.likes}</p>
+                        <i id="likes-num" class ="pill">${beer.likes}</i>
                         <i class="pill icofont-speech-comments"></i>
-                        <p id="comments-num" class ="pill">${beer.comments.length}</p>
+                        <i id="comments-num" class ="pill">${beer.comments.length}</i>
                     </div>
-                    <div>
+                    <div id="link-pill">
                     <a href="/beers/${beer.beerId}" class="pill"><p> Go to details </p></a>
                     </div>
                 </div>

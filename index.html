@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Beerflix. Tu portal de cervezas artesanas.</title>
-    <link rel="stylesheet" type="text/css" href="./styles/reset.css">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./styles/typography/icofont/icofont.css">
-    <link rel="stylesheet" type="text/css" href="./styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles/typography/icofont/icofont.css">
+    <link rel="stylesheet" type="text/css" href="/styles/styles.css">
 </head>
 
 <body>
@@ -44,19 +43,19 @@
             </picture>
         </div>
          <a href="/"><h1 class="logo">Beer<span>Flix</span></h1></a>
-        <div class="filters-container no-display">
-            <h3> filters: </h3>
-            <div class="filters">
-                <div class="date-filter"> 
-                    <button id="date-button-filter" class="open-filter"> first-brew<i>></i> </button>
-                    <div id="date-filter-list" class="no-display">
-                        <p class="check-uncheck"><span class="check-all">check all</span>/<span class="uncheck-all"> uncheck all</span></p>
-                    <!--    <button class="close-filter no-display"> close </button> -->
-                    </div>
-                </div>
-            </div>   
-        </div>
     </header>
+    <div class="filters-container no-display">
+        <h3> filters: </h3>
+        <div class="filters">
+            <div class="date-filter"> 
+                <button id="date-button-filter" class="open-filter"> first-brew<i>></i> </button>
+                <div id="date-filter-list" class="no-display">
+                    <p class="check-uncheck"><span class="check-all">check all</span>/<span class="uncheck-all"> uncheck all</span></p>
+                <!--    <button class="close-filter no-display"> close </button> -->
+                </div>
+            </div>
+        </div>   
+    </div>
     <main>
 
     </main>
@@ -65,7 +64,7 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
-    <script src="./js/routes.js" type="module"></script>
+    <script src="/js/routes.js" type="module"></script>
 </body>
 
 </html>

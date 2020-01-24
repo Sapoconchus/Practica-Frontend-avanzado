@@ -5,6 +5,7 @@ const {setItem, getItem} = storage();
 
 const detailTemplate = ({name, image, likes, comments, description, firstBrewed, price, brewersTips} = {}, malt, hops) => {
     return `
+    <div id="main-detail-container">
     <section class="detail-wrapper">
     <div class="img-container">
         <img src="${image}">
@@ -43,6 +44,7 @@ const detailTemplate = ({name, image, likes, comments, description, firstBrewed,
     <div class="comments-list">
     </div>
 </section>
+</div>
 `};
 
 

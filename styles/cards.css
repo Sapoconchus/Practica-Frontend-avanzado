@@ -3,19 +3,18 @@
     flex-direction: column;
     min-width: 290px;
     justify-content: center;
+    align-items: center;
 }
 
 
 .beer-card {
     display: flex;
-   /* flex-wrap: wrap;
-    flex-grow: 1; esto con la query de 600 px*/
     flex-direction: row;
     border: 1px solid gold;
-    max-height: 250px;
+    max-height: 350px;
+    min-height: 210px;;
     max-width: 500px;
     min-width: 290px;
-    overflow: hidden;
     margin: 20px 10px;
     box-shadow:5px 5px 10px grey; 
 }
@@ -27,10 +26,11 @@
 }
 
 img {
-    height: 100%;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
     display: block;
+    
 }
 
 .info-container {
@@ -46,11 +46,12 @@ img {
 .beer-info {
     width: 100%;
 }
-.beer-info h1 {
-    font-size: calc(1.4rem + 2vw);
+.beer-info #beer-name {
+    font-size: calc(1.4rem + 1.5vw);
     font-weight: bold;
     text-align: center;
     margin-bottom: 10px;
+    margin-top: 0px;
     border-bottom: 2px dotted gold;
     padding-bottom: 5px;
 }
@@ -63,7 +64,17 @@ color: gold;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-end;
     width: 100%;
+}
+
+#social-pills, #link-pill {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    max-height: 20px;
+    padding: 2px;
     margin-bottom: 5px;
 }
 
@@ -74,18 +85,19 @@ color: gold;
 .card-pills a {
     text-align: right;
     text-decoration: none;
-    color: blackgold;
+    color: black;
+    max-height: 55px;
 }
 .card-pills a:hover {
     color: gray;
     background-color: rgba(255, 217, 0, 0.328);
 }
-/*
+
 .card-pills p {
     margin-right: 10px;
     text-align: left;
 }
-
+/*
 .card-pills .icofont-speech-comments, #comments-num {
     display: none;
 }*/
@@ -102,7 +114,7 @@ color: gold;
 }
 
 
-@media all and (min-width:1050px){
+@media all and (min-width:900px){
     .card-container {
         flex-direction: row;
         flex-wrap: wrap;
