@@ -4,7 +4,9 @@
 	height: 300px;
 	overflow: hidden;
 	position: relative;
-	top: 58px;
+	top: 55px;
+	/*left: 0;
+	right:0;*/
 }
 .header-container img {
 	min-width: 100vw;
@@ -16,7 +18,7 @@
 .main-header h1 {
 	position: absolute;
 	display: inline-block;
-	top: 20%; /*35% en el pc de la oficina, puede ser??*/
+	top: 25vh; /*35% en el pc de la oficina, puede ser??*/
 	width: 100%;
 	text-align: center;
 	z-index: 2;

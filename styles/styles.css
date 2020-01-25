@@ -1,3 +1,4 @@
+@import "reset.css";
 @import "cards.css";
 @import "navbar.css";
 @import "header.css";
@@ -55,4 +56,11 @@ p, article {
 button:hover {
     cursor: pointer;
 }
+/* sat 20:47 to style login CHECK HOW EVERYTHING ELSE WORKS */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 

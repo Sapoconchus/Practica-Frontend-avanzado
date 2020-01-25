@@ -51,17 +51,14 @@
 	flex-direction: column;
 }
 
-.form-container input, .form-container label {
+.form-container .form-input, .form-container label {
 
 	display: block;
 	width: 100%;
 	font-size: 1.20rem;
 	border-radius: 2px;
 }
-.form-container input {
-	padding: 0.5rem;
-}
-.form-container label {
+.form-container input, .form-container label {
 	padding: 0.5rem;
 }
 
@@ -74,6 +71,11 @@
  color: black;
  background-color: white;
  align-self: center;
+}
+
+#keep-logged, #keep-logged-label {
+	display: inline;
+	font-size: 1rem;
 }
 
 .form-container button:hover {
@@ -93,5 +95,3 @@
 	font-size: 1rem;
 	margin: 0.5rem;
 }	
-
-*/

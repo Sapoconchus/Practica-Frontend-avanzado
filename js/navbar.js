@@ -16,6 +16,7 @@ const closeButton = document.querySelector(".close")
 const navLogo = document.getElementById("nav-logo");
 
 searchGlass.addEventListener("click", evt =>{
+	navLogo.classList.add("no-display");
 	form.classList.toggle("no-display");
 	searchGlass.classList.toggle("no-display");
 });
@@ -36,6 +37,33 @@ form.addEventListener("submit", evt => {
 
 });
 
+// Intersection observer navbar
+export const launchIo = (element) => {
+
+const navLogo = document.getElementById("nav-logo");
+const options = {};
+const cb = (entries, observer) => {
+	entries.forEach(entry => {
+		if(entry.isIntersecting) {
+			navLogo.classList.toggle("no-display");
+		}
+	});
+};
+
+const io = new IntersectionObserver(cb, options);
+io.observe(element);
+
+navLogo.addEventListener('click', evt => {
+	evt.preventDefault();
+	window.scrollTo(0,0);
+	navLogo.classList.add("no-display")
+})
+
+}
+
+
+
+
 // FILTER UI --> manages beer filter behaviour @ home page
 
 const listContainer = document.querySelector(".date-filter")
@@ -50,11 +78,7 @@ expand.addEventListener("click", evt => {
 	//expand.classList.toggle("no-display");
 
 })
-/*
-close.addEventListener("click", evt => {
-	list.classList.toggle("no-display");
-	close.classList.toggle("no-display");
-	expand.classList.toggle("no-display");
-	listContainer.classList.toggle("expand-list");
-})*/
+
+
+
 

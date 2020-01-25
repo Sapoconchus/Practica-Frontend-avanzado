@@ -34,6 +34,7 @@
 
 .expand-list {
     min-height: 120px;
+    max-height: 200px;
     overflow: scroll;
     overflow-x: hidden;
     background-color: white;

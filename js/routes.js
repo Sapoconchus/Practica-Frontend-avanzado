@@ -7,10 +7,11 @@ import renderLogin from './login.js';
 
 const local = storage('localStore');
 const cookie = storage('cookieStore');
+const session = storage('sesionStore')
 
 page('/', () => {
 
-    if(cookie.getItem("user_key")){
+    if(cookie.getItem("user_key") || sessionStorage.getItem("user_key")){
         document.querySelector(".filters-container").classList.remove("no-display");
         document.querySelector("main").innerHTML = "";
         renderBeers(local.getItem(SEARCH_INPUT));
@@ -21,7 +22,7 @@ page('/', () => {
 });
 
 page('/beers/:id', ctxt => {
-	if(cookie.getItem("user_key")){
+	if(cookie.getItem("user_key") || sessionStorage.getItem("user_key")){
     document.querySelector(".filters-container").classList.add("no-display")
     renderDetails(ctxt.path);
     } else {

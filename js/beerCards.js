@@ -1,5 +1,6 @@
 import { getBeers } from "./api.js";
 import storage from './storage.js';
+import { launchIo } from './navbar.js';
 
 const { setItem, getItem } = storage();
 
@@ -48,20 +49,23 @@ const renderBeers = async input => {
         cardContainer.classList.add("card-container");
 
         cardContainer.innerHTML = `${htmlBeers}`;
-       main.appendChild(cardContainer);
+        main.appendChild(cardContainer);
         // main.innerHTML = `${cardContainer}`;
         renderFilter(dates);
 
-        // filter by date
-   
+        //oberver for displaying logo on navbar
+        const cardObserved = document.querySelector(".beer-card:nth-child(5)");
+        launchIo(cardObserved);
+
+        // filter logic
+        // #1 : by date
+        
         const checkbox = document.querySelectorAll("input[type=checkbox]");
         const beerCard = document.querySelectorAll(".beer-card");
         const checkAll = document.querySelector(".check-all");
         const uncheckAll = document.querySelector(".uncheck-all");
 
         checkbox.forEach((item, index) => item.addEventListener("click", evt => beerCard[index].classList.toggle("no-display")));
-        
-        console.log(checkbox);
 
         checkAll.addEventListener("click", evt =>{
             checkbox.forEach((item, index) => {

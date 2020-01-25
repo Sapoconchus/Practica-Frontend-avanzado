@@ -5,9 +5,11 @@ nav {
 	justify-content: space-between;
 	opacity: 0.6;
 	width: 100vw;
+	top:0;
 	z-index: 99;
 	background-color: rgb(29, 28, 24);
-	min-height: 50px;
+	height: 55px;
+	left:0;
 }
 
 nav a {
@@ -17,7 +19,7 @@ nav a {
 nav .logo {
 	color: white;
 	font-size: 2rem;
-	position: relative;
+	/*position: relative;*/
 }
 
 .search-bar {
@@ -38,7 +40,7 @@ nav .logo {
 }
 
 .search-bar button {
-	height: 44px;
+	height: 30px;
 	width: 44px;
 	margin-left: 10px;
 	border-radius: 5px;

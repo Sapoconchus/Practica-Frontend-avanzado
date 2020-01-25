@@ -1,5 +1,6 @@
 import {getDetails, addLike, postComment } from './api.js'
 import storage from './storage.js';
+import { launchIo } from './navbar.js';
 
 const {setItem, getItem} = storage();
 
@@ -101,6 +102,11 @@ const renderDetails = async id => {
         }
 
     })
+
+        // navbar logo behaviour
+
+        const elementObserved = document.querySelector(".underlying");
+        launchIo(elementObserved);
     
 };
 

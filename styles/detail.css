@@ -6,6 +6,10 @@
 	align-items: center;
 }
 
+#main-detail-container {
+	margin-top: 15px;
+}
+
 .detail-wrapper, .comment-container {
 	overflow: hidden;
 	margin: auto 10px;
@@ -26,11 +30,6 @@
 }
 
 */
-
-
-
-
-
 
 .detail-wrapper {
 	margin-bottom: 15px;
@@ -151,8 +150,10 @@ img {
 
 .single-comment {
 	border-bottom: 1px dotted gray;
-	margin: 10px auto;
-	display: block;
+	/*margin: 10px auto;*/
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
 	width: 100%;
 
 }
@@ -160,6 +161,10 @@ img {
 .single-comment p {
 	text-align: right;
 	margin-bottom: 5px;
+}
+
+.single-comment .comment-date {
+	color: goldenrod;
 }
 
 .single-comment .comment-time {
@@ -170,6 +175,7 @@ img {
 .single-comment .comment-text {
 	font-size: 1.1rem;
 	text-align: justify;
+	margin-bottom: 15px;
 }
 
 .detail-wrapper .underlying .icofont-like:hover{
