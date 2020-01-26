@@ -27,9 +27,7 @@
 .date-filter {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-   /* min-width: 120px;*/
-    
+    justify-content: flex-start;  
 }
 
 .expand-list {

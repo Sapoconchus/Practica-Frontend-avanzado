@@ -7,8 +7,6 @@
 @import "loader.css";
 @import "login.css";
 
-/*cosas globales como tipografía y demás. Se hará */
-
 * {
     box-sizing: border-box;
 }
@@ -40,7 +38,6 @@ a {
 
 .scroll {
     overflow: visible;
-    /*overflow-x: hidden*/
 }
 
 p, article {
@@ -50,13 +47,12 @@ p, article {
 
 .liked {
     color: green;
-    /* animation ? */
 }
 
 button:hover {
     cursor: pointer;
 }
-/* sat 20:47 to style login CHECK HOW EVERYTHING ELSE WORKS */
+
 main {
     display: flex;
     justify-content: center;

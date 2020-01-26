@@ -6,9 +6,7 @@ const API_KEY = "99EQ1ZG-SK9M3J0-NEZGPFS-KK42VJ3";
 const endpoint = "https://beerflix-api.herokuapp.com/api/v1"
 
 export const getBeers = async (query, limit = 10) => {
-  //  const endpoint = "https://beerflix-api.herokuapp.com/api/v1/beers"
     const URL = query ? `${endpoint}/beers?search=${query}&limit=${limit}` : API_URL;
-    
     try {
     
       const response = await fetch(URL, {
@@ -23,7 +21,6 @@ export const getBeers = async (query, limit = 10) => {
       }
     
       const data = await response.json();
-      //const beers = data.map(item => item.beers);
       const {beers} = data;
       return beers;
   
@@ -36,9 +33,7 @@ export const getBeers = async (query, limit = 10) => {
 
 
 export const getDetails = async id => {
- // const endpoint = "https://beerflix-api.herokuapp.com/api/v1"
   const URL = `${endpoint}${id}`
-
   try {
     const response = await fetch(URL, {
       method: 'GET',
@@ -59,7 +54,6 @@ export const getDetails = async id => {
 }
 
 export const addLike = async id => {
- // const endpoint = "https://beerflix-api.herokuapp.com/api/v1"
   const URL = `${endpoint}${id}/like`
  try { const like = await fetch(URL, {
     method: 'POST',
@@ -77,7 +71,6 @@ export const addLike = async id => {
 }
 
 export const postComment = async (id, comment) => {
-//  const endpoint = "https://beerflix-api.herokuapp.com/api/v1"
   const URL = `${endpoint}${id}/comment`;
  try { const postComment = await fetch(URL, {
     method: 'POST',
@@ -130,10 +123,8 @@ export const getUser = async email => {
       body: JSON.stringify({
         email,
       })
-    })
-    
+    })  
     const data = await response.json();
-console.log(data)
     return data;
 
   } catch (err) {
