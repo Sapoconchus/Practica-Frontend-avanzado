@@ -1,6 +1,6 @@
 import {getDetails, addLike, postComment } from './api.js'
 import storage from './storage.js';
-import { launchIo } from './userInterface.js';
+import { launchIo } from './ui.js';
 
 const {setItem, getItem} = storage();
 
@@ -48,18 +48,15 @@ const detailTemplate = ({name, image, likes, comments, description, firstBrewed,
 </div>
 `};
 
-
-
 const renderDetails = async id => {
     const detail = await getDetails(id);
-    //console.log(detail);
+
     const {ingredients: {malt, hops}} = detail;
 
     const maltList = malt.map(item => item.name);
-    const maltFiltered = [...new Set(maltList)].join(", "); //cool!
+    const maltFiltered = [...new Set(maltList)].join(", "); //cool! Found it on StackOverflow. I use both methods on purpose.
     const hopsList = hops.map(item => item.name).sort(); //can't chain the filter, throws an error ("It is not initializated")
     const hopsFiltered = hopsList.filter((item,i) => hopsList.indexOf(item) == i).join(", ");
-
 
     const mainContainer = document.querySelector("main");    
 
@@ -128,14 +125,3 @@ const renderComments = array => {
 }
 
 export default renderDetails;
-
-/*
-const getNamer = (array) => {
-    
-    const newArray = []
-
-    for(let i = 0; i < array.length; i++) {
-       newArray.push(` ${array[i].name}`)
-    }
-    return newArray;
-}*/

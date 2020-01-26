@@ -1,6 +1,6 @@
 import { getBeers } from "./api.js";
 import storage from './storage.js';
-import { renderFilter, launchIo } from './userInterface.js';
+import { renderFilter, launchIo } from './ui.js';
 
 const { setItem, getItem } = storage();
 
@@ -43,19 +43,17 @@ const renderBeers = async input => {
         const prices = [];
         const htmlBeers = beers.map(beer => {
             dates.push(beer.firstBrewed);
-            prices.push(beer.price)
+           // prices.push(beer.price)
             return cardTemplate(beer);
         }).join("");
 
-        const priceFiltered = [...new Set(prices)];
+        // const priceFiltered = [...new Set(prices)];
 
         const cardContainer = document.createElement("section")
         cardContainer.classList.add("card-container");
 
         cardContainer.innerHTML = `${htmlBeers}`;
         main.appendChild(cardContainer);
-        // main.innerHTML = `${cardContainer}`;
- 
 
         //oberver for displaying logo on navbar
         const cardObserved = document.querySelector(".beer-card:nth-child(5)");
@@ -65,16 +63,12 @@ const renderBeers = async input => {
         // #1 : by date
 
         renderFilter(dates);
-        renderFilter(priceFiltere) // no printa porque pillo de container el "dates" pero si lo intento cambiar me jode todo el comportamiento de los listeners que tengo en navbar... VAMOS, QUE LA LIA PARDA
+       // renderFilter(priceFiltered) // to be implemented on next versions
         
-        
-
     } catch (err) {
         console.log(err);
     }
 };
-
-
 
 export default renderBeers;
 

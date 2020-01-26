@@ -89,7 +89,6 @@ color: gold;
     max-height: 55px;
 }
 .card-pills a:hover {
-    color: gray;
     background-color: rgba(255, 217, 0, 0.328);
 }
 
@@ -97,10 +96,6 @@ color: gold;
     margin-right: 10px;
     text-align: left;
 }
-/*
-.card-pills .icofont-speech-comments, #comments-num {
-    display: none;
-}*/
 
 .brew-year {
     color: gray;

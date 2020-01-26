@@ -3,7 +3,7 @@ nav {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	opacity: 0.6;
+	opacity: 0.8;
 	width: 100vw;
 	top:0;
 	z-index: 99;
@@ -35,7 +35,6 @@ nav .logo {
 .search-bar input{
 	height: 30px;
 	max-width: 45vw;
-	/*max-width: 250px;*/
 	padding: 5px 0 5px 15px;
 	font-size: 1rem;
 	border-radius: 5px;
