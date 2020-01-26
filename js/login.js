@@ -1,6 +1,6 @@
 import storage from './storage.js';
 import renderBeers from './beerCards.js';
-import { SEARCH_INPUT } from './navbar.js';
+import { SEARCH_INPUT } from './userInterface.js';
 import { userRegister, getUser } from './api.js';
 
 const cookie = storage("cookieStore");

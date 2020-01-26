@@ -1,6 +1,6 @@
 import { getBeers } from "./api.js";
 import storage from './storage.js';
-import { renderFilter, launchIo } from './navbar.js';
+import { renderFilter, launchIo } from './userInterface.js';
 
 const { setItem, getItem } = storage();
 

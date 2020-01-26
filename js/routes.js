@@ -1,6 +1,6 @@
 import renderBeers from "./beerCards.js";
 import storage from './storage.js';
-import { SEARCH_INPUT } from './navbar.js';
+import { SEARCH_INPUT } from './userInterface.js';
 import renderDetails from "./beerDetail.js";
 import { getDetails } from './api.js';
 import renderLogin from './login.js';
