@@ -40,41 +40,40 @@ form.addEventListener("submit", evt => {
 // Intersection observer navbar
 export const launchIo = (element) => {
 
-const navLogo = document.getElementById("nav-logo");
-const options = {};
-const cb = (entries, observer) => {
-	entries.forEach(entry => {
-		if(entry.isIntersecting) {
-			navLogo.classList.toggle("no-display");
-		}
-	});
-};
+    const navLogo = document.getElementById("nav-logo");
+    const options = {};
+    const cb = (entries, observer) => {
+	    entries.forEach(entry => {
+		    if(entry.isIntersecting) {
+			    navLogo.classList.toggle("no-display");
+		    }
+	    });
+    };
 
-const io = new IntersectionObserver(cb, options);
-io.observe(element);
+    const io = new IntersectionObserver(cb, options);
+    io.observe(element);
 
-navLogo.addEventListener('click', evt => {
-	evt.preventDefault();
-	window.scrollTo(0,0);
-	navLogo.classList.add("no-display")
-})
+    navLogo.addEventListener('click', evt => {
 
+	    evt.preventDefault();
+	    window.scrollTo(0,0);
+	    navLogo.classList.add("no-display")
+    });
 }
 
-const filterTemplate = (input, index, array) => {
+const filterTemplate = (input, index) => {
     return `
-    <li><label><input class ="${index} ${array}" type="checkbox" name=${input} value=${input} checked> ${input}</label></li></br>`
+    <li><label><input class ="${index}" type="checkbox" name=${input} value=${input} checked> ${input}</label></li></br>`
 }
 
 
 //Home page filter render
 
 export const renderFilter = array => {
-    console.log(array)
     
     //render filter
     const container = document.querySelector("#date-filter-list");
-    const checkBoxes = array.map((item, index, array) => filterTemplate(item, index, array)).join("");
+    const checkBoxes = array.map((item, index) => filterTemplate(item, index)).join("");
     const list = document.createElement("ul");
 
     list.innerHTML = `${checkBoxes} <button class="close-filter no-display"> close </button>`;
@@ -82,7 +81,7 @@ export const renderFilter = array => {
     
     //add behaviour to the checkboxes printed
 
-    const checkers = document.querySelectorAll("input[type=checkbox]"); // meter class={$array}
+    const checkers = document.querySelectorAll("input[type=checkbox]");
     const beerCard = document.querySelectorAll(".beer-card");
     const checkAll = document.querySelector(".check-all");
     const uncheckAll = document.querySelector(".uncheck-all");

@@ -1,6 +1,6 @@
 import {getDetails, addLike, postComment } from './api.js'
 import storage from './storage.js';
-import { launchIo } from './navbar.js';
+import { launchIo } from './ui.js';
 
 const {setItem, getItem} = storage();
 
