@@ -19,7 +19,9 @@ nav a {
 nav .logo {
 	color: white;
 	font-size: 2rem;
-	/*position: relative;*/
+	position: relative;
+	right: 40px;
+	top: 15px;
 }
 
 .search-bar {

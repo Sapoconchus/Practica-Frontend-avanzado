@@ -1,6 +1,6 @@
 import { getBeers } from "./api.js";
 import storage from './storage.js';
-import { launchIo } from './navbar.js';
+import { renderFilter, launchIo } from './navbar.js';
 
 const { setItem, getItem } = storage();
 
@@ -39,11 +39,15 @@ const renderBeers = async input => {
         const beers = await getBeers(input);
 
         const main = document.querySelector("main");
-        const dates = []
+        const dates = [];
+        const prices = [];
         const htmlBeers = beers.map(beer => {
             dates.push(beer.firstBrewed);
+            prices.push(beer.price)
             return cardTemplate(beer);
         }).join("");
+
+        const priceFiltered = [...new Set(prices)];
 
         const cardContainer = document.createElement("section")
         cardContainer.classList.add("card-container");
@@ -51,7 +55,7 @@ const renderBeers = async input => {
         cardContainer.innerHTML = `${htmlBeers}`;
         main.appendChild(cardContainer);
         // main.innerHTML = `${cardContainer}`;
-        renderFilter(dates);
+ 
 
         //oberver for displaying logo on navbar
         const cardObserved = document.querySelector(".beer-card:nth-child(5)");
@@ -59,46 +63,18 @@ const renderBeers = async input => {
 
         // filter logic
         // #1 : by date
+
+        renderFilter(dates);
+        renderFilter(priceFiltere) // no printa porque pillo de container el "dates" pero si lo intento cambiar me jode todo el comportamiento de los listeners que tengo en navbar... VAMOS, QUE LA LIA PARDA
         
-        const checkbox = document.querySelectorAll("input[type=checkbox]");
-        const beerCard = document.querySelectorAll(".beer-card");
-        const checkAll = document.querySelector(".check-all");
-        const uncheckAll = document.querySelector(".uncheck-all");
-
-        checkbox.forEach((item, index) => item.addEventListener("click", evt => beerCard[index].classList.toggle("no-display")));
-
-        checkAll.addEventListener("click", evt =>{
-            checkbox.forEach((item, index) => {
-                if(!item.checked) { item.checked = true;};
-                beerCard[index].classList.remove("no-display");
-                });
-        });
-        uncheckAll.addEventListener("click", evt =>{
-            checkbox.forEach((item, index) => {
-                if(item.checked) { item.checked = false;};
-                beerCard[index].classList.add("no-display");
-                });
-        });
-
+        
 
     } catch (err) {
         console.log(err);
     }
 };
 
-const filterTemplate = (input, index) => {
-    return `
-    <li><label><input class ="${index}" type="checkbox" name=${input} value=${input} checked> ${input}</label></li></br>`
-}
 
-const renderFilter = array => {
-    
-    const container = document.querySelector("#date-filter-list");
-    const checkBoxes = array.map((item, index) => filterTemplate(item, index)).join("");
-    const list = document.createElement("ul");
-    list.innerHTML = `${checkBoxes} <button class="close-filter no-display"> close </button>`;
-    container.appendChild(list);
-};
 
 export default renderBeers;
 

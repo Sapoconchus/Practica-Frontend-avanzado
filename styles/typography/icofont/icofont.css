@@ -48,6 +48,21 @@ url("./fonts/icofont.woff") format("woff");
   content: "\ed11";
 }
 
+.icofont-expand-alt:before
+{
+  content: "\ea7d";
+}
+
+.icofont-filter:before
+{
+  content: "\ef29";
+}
+
+.icofont-ui-close:before
+{
+  content: "\ec4f";
+}
+
 .icofont-xs
 {
   font-size: .5em;
