@@ -43,11 +43,11 @@ const renderBeers = async input => {
         const prices = [];
         const htmlBeers = beers.map(beer => {
             dates.push(beer.firstBrewed);
-           // prices.push(beer.price)
+            prices.push(beer.price)
             return cardTemplate(beer);
         }).join("");
 
-        // const priceFiltered = [...new Set(prices)];
+        const priceFiltered = [...new Set(prices)];
 
         const cardContainer = document.createElement("section")
         cardContainer.classList.add("card-container");
@@ -62,8 +62,8 @@ const renderBeers = async input => {
         // filter logic
         // #1 : by date
 
-        renderFilter(dates);
-       // renderFilter(priceFiltered) // to be implemented on next versions
+        renderFilter(dates, "firstly-brewed");
+        renderFilter(priceFiltered, "beer-price") // to be implemented on next versions
         
     } catch (err) {
         console.log(err);

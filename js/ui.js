@@ -61,23 +61,46 @@ export const launchIo = (element) => {
     });
 }
 
-const filterTemplate = (input, index) => {
+const filterTemplate = (name) => {
     return `
-    <li><label><input class ="${index}" type="checkbox" name=${input} value=${input} checked> ${input}</label></li></br>`
+    <div class="${name}-filter"> 
+        <button id="${name}-button-filter" class="open-filter"> ${name} <i class="icofont-filter"> </i> </button>
+        <div id="${name}-filter-list" class="no-display">
+            
+        </div>
+    </div>`
 }
+
+const listTemplate = (input, index) => {
+    return `
+<li><label><input class="${index}" type="checkbox" name=${input} value=${input} checked> ${input}</label></li></br>
+`}
 
 
 //Home page filter render
 
-export const renderFilter = array => {
+export const renderFilter = (array, name) => {
     
     //render filter
-    const container = document.querySelector("#date-filter-list");
-    const checkBoxes = array.map((item, index) => filterTemplate(item, index)).join("");
-    const list = document.createElement("ul");
+    const filter = filterTemplate(name);
+    const container = document.querySelector('#beer-filters');
+    const filterContainer = document.createElement("div");
 
-    list.innerHTML = `${checkBoxes} <button class="close-filter no-display"> close </button>`;
-    container.appendChild(list);
+    filterContainer.innerHTML = `${filter}`;
+    container.appendChild(filterContainer)
+
+
+    const listContainer = document.querySelector(`#${name}-filter-list`);
+    
+    
+    const checkBoxes = array.map((item, index) => listTemplate(item, index)).join("");
+    const list = document.createElement("ul");
+    list.setAttribute("id",`${name}-filter-list-displayed`)
+
+    list.innerHTML = `<p class="check-uncheck"><span class="check-all">check all</span>/<span class="uncheck-all"> uncheck all</span></p>${checkBoxes}`;
+    listContainer.insertBefore(list, listContainer.firstChild);
+
+    console.log(checkBoxes)
     
     //add behaviour to the checkboxes printed
 
@@ -85,6 +108,8 @@ export const renderFilter = array => {
     const beerCard = document.querySelectorAll(".beer-card");
     const checkAll = document.querySelector(".check-all");
     const uncheckAll = document.querySelector(".uncheck-all");
+
+    console.log(checkers)
 
     checkers.forEach((item, index) => item.addEventListener("click", evt => beerCard[index].classList.toggle("no-display")));
 
@@ -101,18 +126,24 @@ export const renderFilter = array => {
             beerCard[index].classList.add("no-display");
             });
     });
-};
 
 // FILTER UI --> manages beer filter behaviour @ home page
 
-const listContainer = document.querySelector(".date-filter")
-const expand = document.querySelector(".open-filter");
-const list = document.querySelector("#date-filter-list");
+const listExpander = document.getElementById(`${name}-filter`)
+const expand = document.getElementById(`${name}-button-filter`);
+const openList = document.getElementById(`${name}-filter-list`);
 
 expand.addEventListener("click", evt => {
-	list.classList.toggle("no-display");
-	listContainer.classList.toggle("expand-list");
+	openList.classList.toggle("no-display");
+	listExpander.classList.toggle("expand-list"); //
 })
+
+
+
+
+};
+
+
 
 
 
