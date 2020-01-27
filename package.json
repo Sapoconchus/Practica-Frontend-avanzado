@@ -4,7 +4,8 @@
   "description": "Practica Frontend Avanzado",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,13 @@
   "homepage": "https://github.com/Sapoconchus/Practica-Frontend-Avanzado#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "husky": "^4.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint" //aun no tengo instalado lint
+    }
   }
 }
