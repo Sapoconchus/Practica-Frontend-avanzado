@@ -4,7 +4,7 @@
   "description": "Practica Frontend Avanzado",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "init:lint": "./node_modules/.bin/eslint --init",
     "webpack:demo:entry": "./node_modules/.bin/webpack --entry './js/routes.js'",
     "webpack": "./node_modules/.bin/webpack",
     "webpack:watch": "./node_modules/.bin/webpack --watch",
@@ -26,6 +26,9 @@
   },
   "devDependencies": {
     "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.0",
     "husky": "^4.2.1",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
