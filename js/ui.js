@@ -79,15 +79,14 @@ const listTemplate = (input, index) => {
 
 //Home page filter render
 
-export const renderFilter = (array, name) => {
+export const renderFilter = (array, name, anchor) => {
     
     //render filter
     const filter = filterTemplate(name);
-    const container = document.querySelector('#beer-filters');
     const filterContainer = document.createElement("div");
 
     filterContainer.innerHTML = `${filter}`;
-    container.appendChild(filterContainer)
+    anchor.appendChild(filterContainer)
 
 
     const listContainer = document.querySelector(`#${name}-filter-list`);
