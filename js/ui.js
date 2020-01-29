@@ -79,14 +79,26 @@ const listTemplate = (input, index) => {
 
 //Home page filter render
 
-export const renderFilter = (array, name, anchor) => {
+export const renderFilter = (object) => {
     
+    // si los argumentos los meto como objeto con las keys {array, name}
+    // el array tiene el array de items a hacer checkbox, el nombre que le quieres dar al filtro y el anchor en el que meterlo
+    /*const date = {
+        inputs: [array dates],
+        name: "Brew date",
+        }
+    */
     //render filter
-    const filter = filterTemplate(name);
-    const filterContainer = document.createElement("div");
 
-    filterContainer.innerHTML = `${filter}`;
-    anchor.appendChild(filterContainer)
+    object.forEach(item => ({ name: object.name, inputs } = object));
+
+    console.log(name, inputs)
+}
+/*
+    const makeFilter = filterTemplate(name);
+    const filterContainer = document.querySelector('#beer-filters');
+    
+    filterContainer.innerHTML = `${makeFilter}`;
 
 
     const listContainer = document.querySelector(`#${name}-filter-list`);
@@ -142,7 +154,7 @@ expand.addEventListener("click", evt => {
 
 };
 
-
+*/
 
 
 

@@ -62,11 +62,23 @@ const renderBeers = async input => {
         // filter logic
         // #1 : by date
 
-        const filterContainer = document.querySelector('#beer-filters');
-
+        /*
         renderFilter(dates, "firstly-brewed", filterContainer);
         renderFilter(priceFiltered, "beer-price", filterContainer); // to be implemented on next versions
-        
+        */
+
+        const dateFilter = {
+            inputs: dates,
+            name: "firstly brewed"
+            };
+
+        const priceFilter = {
+            inputs: prices,
+            name: "price"
+        };
+
+        renderFilter(dateFilter, priceFilter)
+
     } catch (err) {
         console.log(err);
     }
