@@ -69,7 +69,7 @@ const renderBeers = async input => {
 
         const dateFilter = {
             inputs: dates,
-            name: "firstly brewed"
+            name: "firstly-brewed"
             };
 
         const priceFilter = {
