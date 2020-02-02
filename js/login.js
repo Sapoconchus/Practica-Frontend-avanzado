@@ -3,9 +3,9 @@ import renderBeers from './beerCards.js';
 import { SEARCH_INPUT } from './ui.js';
 import { userRegister, getUser } from './api.js';
 
-const cookie = storage("cookieStore");
-const session = storage("sessionStore");
-const local = storage("localStore");
+const cookie = storage('cookieStore');
+const session = storage('sessionStore');
+const local = storage('localStore');
 
 const logInDialog = `
 		<div class="user-mgmt">
@@ -43,65 +43,62 @@ const logInDialog = `
 		</div>`;
 
 const renderLogin = () => {
+  const container = document.querySelector('main');
+  container.innerHTML = logInDialog;
+  // register form elements
+  const registerForm = document.querySelector('#register-form');
+  const userName = document.querySelector('#username');
+  const regEmail = document.querySelector('#reg-email');
+  // login form elements
+  const loginForm = document.querySelector('#login-form');
+  const logEmail = document.querySelector('#log-email');
+  // hanger of forms
+  const changeForm = document.querySelector('.form-changer');
+  // keep logged checkbox
+  const keepLogged = document.querySelector('#keep-logged');
 
-	const container = document.querySelector("main");
-	container.innerHTML = logInDialog;
-		// register form elements
-	const registerForm = document.querySelector('#register-form')
-	const userName = document.querySelector("#username");
-	const regEmail = document.querySelector("#reg-email");
-		// login form elements
-	const loginForm = document.querySelector("#login-form");
-	const logEmail = document.querySelector("#log-email");
-		//hanger of forms
-	const changeForm = document.querySelector(".form-changer");
-		//keep logged checkbox
-	const keepLogged = document.querySelector("#keep-logged");
-	
-	registerForm.addEventListener('submit', evt => {
-		evt.preventDefault();
-		if(userName.validity.valid && regEmail.validity.valid) {
-			userRegister(username.value, regEmail.value)
-			container.innerHTML = "";
-			window.alert("user correctly created! Now you can proceed to log in")
-			renderLogin();
-		};
-	})	
+  registerForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    if (userName.validity.valid && regEmail.validity.valid) {
+      userRegister(username.value, regEmail.value);
+      container.innerHTML = '';
+      window.alert('user correctly created! Now you can proceed to log in');
+      renderLogin();
+    }
+  });
 
-	changeForm.addEventListener('click', evt =>{
-		registerForm.classList.toggle("no-display");
-		loginForm.classList.toggle("no-display");
+  changeForm.addEventListener('click', (evt) => {
+    registerForm.classList.toggle('no-display');
+    loginForm.classList.toggle('no-display');
+  });
 
-	})
+  loginForm.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
 
-	loginForm.addEventListener('submit', async evt => {
-		evt.preventDefault();
+    if (logEmail.validity.valid) {
+      const apiUser = await getUser(logEmail.value);
 
-		if(logEmail.validity.valid) {
+      const { user: { apiKey } } = apiUser;
 
-			const apiUser = await getUser(logEmail.value);
-
-			const {user: {apiKey}} = apiUser;
-			
-				//checking if the user exists on DB
-			if (apiUser.success) {			
-				//keep logged on cookieStorage or session only
-				if(keepLogged.checked) {
-					cookie.setItem(logEmail.name, logEmail.value, 365);
-					cookie.setItem("user_key", apiKey);
-				} else {
-					session.setItem(logEmail.name, logEmail.value);
-					session.setItem("user_key", apiKey);	
-				}
-			container.innerHTML = "";
-			await renderBeers(local.getItem(SEARCH_INPUT));
-			document.querySelector(".filters-container").classList.remove("no-display");
-			} else {
-				console.error("user not found");
-				window.alert("User unknown. Please register.")
-			};
-		};	
-	});
+      // checking if the user exists on DB
+      if (apiUser.success) {
+        // keep logged on cookieStorage or session only
+        if (keepLogged.checked) {
+          cookie.setItem(logEmail.name, logEmail.value, 365);
+          cookie.setItem('user_key', apiKey);
+        } else {
+          session.setItem(logEmail.name, logEmail.value);
+          session.setItem('user_key', apiKey);
+        }
+        container.innerHTML = '';
+        await renderBeers(local.getItem(SEARCH_INPUT));
+        document.querySelector('.filters-container').classList.remove('no-display');
+      } else {
+        console.error('user not found');
+        window.alert('User unknown. Please register.');
+      }
+    }
+  });
 };
 
 export default renderLogin;
