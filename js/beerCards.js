@@ -41,9 +41,13 @@ const renderBeers = async input => {
         const main = document.querySelector("main");
         const dates = [];
         const prices = [];
+        const ingredients = [];
+        const names = [];
         const htmlBeers = beers.map(beer => {
             dates.push(beer.firstBrewed);
             prices.push(beer.price)
+            ingredients.push(beer.ingredients);
+            names.push(beer.name);
             return cardTemplate(beer);
         }).join("");
 
@@ -59,13 +63,7 @@ const renderBeers = async input => {
         const cardObserved = document.querySelector(".beer-card:nth-child(5)");
         launchIo(cardObserved);
 
-        // filter logic
-        // #1 : by date
-
-        /*
-        renderFilter(dates, "firstly-brewed", filterContainer);
-        renderFilter(priceFiltered, "beer-price", filterContainer); // to be implemented on next versions
-        */
+        // Filter Objects and printing
 
         const dateFilter = {
             inputs: dates,
@@ -76,8 +74,20 @@ const renderBeers = async input => {
             inputs: prices,
             name: "price"
         };
+        const nameFilter = {
+            inputs: names,
+            name: "brand"
+        };
 
-        renderFilter(dateFilter, priceFilter)
+
+        const ingredientsFilter = {
+            inputs: ingredients,
+            name: "ingredients"
+        };
+
+        console.log(ingredients, ingredientsFilter);
+
+        renderFilter(dateFilter, priceFilter, nameFilter)
 
     } catch (err) {
         console.log(err);

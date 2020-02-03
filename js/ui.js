@@ -106,8 +106,6 @@ args.forEach( item => {
 
     listContainer.insertBefore(list, listContainer.firstChild);
 
-    console.log(checkBoxes)
-
     //add behaviour to the checkboxes printed --> OLD CODE. It works but it shows an error on the classList toggler on the console
 
     const checkers = document.querySelectorAll("input[type=checkbox]");
@@ -115,7 +113,7 @@ args.forEach( item => {
     const checkAll = document.querySelector(".check-all");
     const uncheckAll = document.querySelector(".uncheck-all");
 
-    console.log(checkers)
+    // GOTTA TRY TO LINK THE CHECKER TO THE CARD THROUGH ID OR CLASS INSTEAD OF INDEX IN ORDER TO GROUP CHECKBOXES AND NOT DISPLAYING REPEATED VALUES
 
     checkers.forEach((item, index) => item.addEventListener("click", evt => beerCard[index].classList.toggle("no-display")));
 
@@ -150,37 +148,13 @@ expand.addEventListener("click", evt => {
 
 }
 
-/*
-   
-    //add behaviour to the checkboxes printed
+export const extractIngredients = detail => {
 
-    const checkers = document.querySelectorAll("input[type=checkbox]");
-    const beerCard = document.querySelectorAll(".beer-card");
-    const checkAll = document.querySelector(".check-all");
-    const uncheckAll = document.querySelector(".uncheck-all");
+    //so I can extract beer's ingredients on home render. GOTTA DEFINE WHAT TO RETURN
+    const {ingredients: {malt, hops}} = detail;
 
-    console.log(checkers)
-
-    checkers.forEach((item, index) => item.addEventListener("click", evt => beerCard[index].classList.toggle("no-display")));
-
-    checkAll.addEventListener("click", evt =>{
-        checkers.forEach((item, index) => {
-            if(!item.checked) { item.checked = true;};
-            beerCard[index].classList.remove("no-display");
-            });
-    });
-
-    uncheckAll.addEventListener("click", evt =>{
-        checkers.forEach((item, index) => {
-            if(item.checked) { item.checked = false;};
-            beerCard[index].classList.add("no-display");
-            });
-    });
-})
-
-
-
+    const maltList = malt.map(item => item.name);
+    const maltFiltered = [...new Set(maltList)].join(", "); //cool! Found it on StackOverflow. I use both methods on purpose.
+    const hopsList = hops.map(item => item.name).sort(); //can't chain the filter, throws an error ("It is not initializated")
+    const hopsFiltered = hopsList.filter((item,i) => hopsList.indexOf(item) == i).join(", ");
 };
-
-*/
-
