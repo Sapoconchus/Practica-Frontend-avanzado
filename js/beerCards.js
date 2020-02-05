@@ -85,8 +85,6 @@ const renderBeers = async input => {
             name: "ingredients"
         };
 
-        console.log(ingredients, ingredientsFilter);
-
         renderFilter(dateFilter, priceFilter, nameFilter)
 
     } catch (err) {

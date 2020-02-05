@@ -73,9 +73,9 @@ const filterTemplate = (name) => {
         `
 }
 
-const listTemplate = (input, index) => {
+const listTemplate = (input, index, name) => {
     return `
-<li><label><input class="${index}" type="checkbox" name=${input} value=${input} checked> ${input}</label></li></br>
+<li><label><input class="${index}" type="checkbox" name=${name} value=${input} checked> ${input}</label></li></br>
 `}
 
 
@@ -97,7 +97,7 @@ args.forEach( item => {
 
     const listContainer = document.querySelector(`#${item.name}-filter-list`);
 
-    const checkBoxes = item.inputs.map((check, index) => listTemplate(check, index)).join("");
+    const checkBoxes = item.inputs.map((check, index) => listTemplate(check, index, item.name)).join("");
 
     const list = document.createElement("ul");
     list.setAttribute("id",`${item.name}-filter-list-displayed`)
@@ -106,13 +106,14 @@ args.forEach( item => {
 
     listContainer.insertBefore(list, listContainer.firstChild);
 
-    //add behaviour to the checkboxes printed --> OLD CODE. It works but it shows an error on the classList toggler on the console
+    //add behaviour to the checkboxes printed
 
-    const checkers = document.querySelectorAll("input[type=checkbox]");
+    const checkers = document.querySelectorAll(`input[name="${item.name}"]`);
     const beerCard = document.querySelectorAll(".beer-card");
     const checkAll = document.querySelector(".check-all");
     const uncheckAll = document.querySelector(".uncheck-all");
 
+    console.log(checkers)
     // GOTTA TRY TO LINK THE CHECKER TO THE CARD THROUGH ID OR CLASS INSTEAD OF INDEX IN ORDER TO GROUP CHECKBOXES AND NOT DISPLAYING REPEATED VALUES
 
     checkers.forEach((item, index) => item.addEventListener("click", evt => beerCard[index].classList.toggle("no-display")));
