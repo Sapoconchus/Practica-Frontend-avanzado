@@ -82,6 +82,8 @@ const listTemplate = (input, index, name) => {
 //Home page filter render
 
 export const renderFilter = (...args) => {
+
+filterContainer.innerHTML="";    
     
 args.forEach( item => {
 

@@ -49,6 +49,8 @@ const detailTemplate = ({name, image, likes, comments, description, firstBrewed,
 `};
 
 const renderDetails = async id => {
+    console.log(id);
+    
     const detail = await getDetails(id);
 
     const {ingredients: {malt, hops}} = detail;

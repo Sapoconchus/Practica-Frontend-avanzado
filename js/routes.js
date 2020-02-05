@@ -30,7 +30,8 @@ page('/beers/:id', ctxt => {
 
     document.querySelector(".filters-container").classList.add("no-display")
     renderDetails(ctxt.path);
-
+    console.log(ctxt.path);
+    console.log(ctxt);
     } else {
 
         renderLogin()

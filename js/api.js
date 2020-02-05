@@ -31,7 +31,6 @@ export const getBeers = async (query, limit = 10) => {
 
 }
 
-
 export const getDetails = async id => {
   const URL = `${endpoint}${id}`
   try {

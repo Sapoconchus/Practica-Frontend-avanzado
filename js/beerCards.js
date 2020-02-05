@@ -1,4 +1,4 @@
-import { getBeers } from "./api.js";
+import { getBeers, addLike } from "./api.js";
 import storage from './storage.js';
 import { renderFilter, launchIo } from './ui.js';
 
@@ -32,7 +32,6 @@ const cardTemplate = beer => {
         </div>
     </div>`
 }
-
 
 const renderBeers = async input => {
     try {
@@ -86,6 +85,28 @@ const renderBeers = async input => {
         };
 
         renderFilter(dateFilter, priceFilter, nameFilter)
+
+    // likes manager AINT WORKING JUST YET
+
+    const thumbUp = document.querySelectorAll(".icofont-like");
+
+    console.log(thumbUp);
+
+    thumbUp.forEach(icon => {
+
+        const id = icon.parentNode.parentNode.parentNode.parentNode.getAttribute("id");
+
+        const liker = evt => {
+        
+          addLike(`/beers/${id}`); 
+          icon.classList.add("liked");
+          const likeNum= icon.nextSibling.nextSibling;
+          likeNum.innerText = parseInt(likeNum.innerText) + 1;
+          icon.removeEventListener('click', liker)
+        }
+
+        getItem(`/beers/${id}`) !== "liked" ?  icon.addEventListener('click', liker) : icon.classList.add("liked");
+    })    
 
     } catch (err) {
         console.log(err);
