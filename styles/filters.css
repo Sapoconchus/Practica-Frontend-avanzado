@@ -8,6 +8,17 @@
     z-index: 22;
 }
 
+#beer-filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border: 1px dotted gray;
+}
+
+.printed-filter {
+    margin: 5px;
+}
+
 .filters-container h3 {
     font-size: 1.5rem;
     font-family: arial;
