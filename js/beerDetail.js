@@ -1,11 +1,12 @@
-import {getDetails, addLike, postComment } from './api.js'
-import storage from './storage.js';
-import { launchIo } from './ui.js';
+import { getDetails, addLike, postComment } from './api';
+import storage from './storage';
+import { launchIo } from './ui';
 
-const {setItem, getItem} = storage();
+const { setItem, getItem } = storage();
 
-const detailTemplate = ({name, image, likes, comments, description, firstBrewed, price, brewersTips} = {}, malt, hops) => {
-    return `
+const detailTemplate = ({
+  name, image, likes, comments, description, firstBrewed, price, brewersTips,
+} = {}, malt, hops) => `
     <div id="main-detail-container">
     <section class="detail-wrapper">
     <div class="img-container">
@@ -46,84 +47,77 @@ const detailTemplate = ({name, image, likes, comments, description, firstBrewed,
     </div>
 </section>
 </div>
-`};
+`;
 
 const renderDetails = async id => {
     console.log(id);
     
     const detail = await getDetails(id);
 
-    const {ingredients: {malt, hops}} = detail;
+  const { ingredients: { malt, hops } } = detail;
 
-    const maltList = malt.map(item => item.name);
-    const maltFiltered = [...new Set(maltList)].join(", "); //cool! Found it on StackOverflow. I use both methods on purpose.
-    const hopsList = hops.map(item => item.name).sort(); //can't chain the filter, throws an error ("It is not initializated")
-    const hopsFiltered = hopsList.filter((item,i) => hopsList.indexOf(item) == i).join(", ");
+  const maltList = malt.map((item) => item.name);
+  const maltFiltered = [...new Set(maltList)].join(', '); // cool! Found it on StackOverflow. I use both methods on purpose.
+  const hopsList = hops.map((item) => item.name).sort(); // can't chain the filter, throws an error ("It is not initializated")
+  const hopsFiltered = hopsList.filter((item, i) => hopsList.indexOf(item) == i).join(', ');
 
-    const mainContainer = document.querySelector("main");    
+  const mainContainer = document.querySelector('main');
 
-    mainContainer.innerHTML = detailTemplate(detail, maltFiltered, hopsFiltered);
+  mainContainer.innerHTML = detailTemplate(detail, maltFiltered, hopsFiltered);
 
-        // get and display likes
+  // get and display likes
 
-    const thumbUp = document.querySelector(".icofont-like");
-    const likesNum = document.querySelector(".likes-num")
+  const thumbUp = document.querySelector('.icofont-like');
+  const likesNum = document.querySelector('.likes-num');
 
-    const liker = evt => {
-        
-    addLike(id); 
-    thumbUp.classList.add("liked")
+  const liker = (evt) => {
+    addLike(id);
+    thumbUp.classList.add('liked');
     likesNum.innerText = parseInt(likesNum.innerText) + 1;
-    thumbUp.removeEventListener('click', liker)
+    thumbUp.removeEventListener('click', liker);
+  };
 
+  getItem(id) !== 'liked' ? thumbUp.addEventListener('click', liker) : thumbUp.classList.add('liked');
+
+  // get and display comments
+
+  const { comments } = detail;
+  console.log(comments);
+  console.log(comments.comment, comments.dateComment);
+
+  renderComments(comments);
+
+  const postForm = document.querySelector('#comment-form');
+  const commentInput = document.querySelector('#text-area');
+  const loader = document.querySelector('.lds-ellipsis');
+
+  postForm.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
+    if (commentInput.validity.valid) {
+      loader.classList.toggle('no-display');
+      await postComment(id, commentInput.value);
+      renderDetails(id);
     }
-   
-    getItem(id) !== "liked" ?  thumbUp.addEventListener("click", liker) : thumbUp.classList.add("liked");
-        
-        // get and display comments
+  });
 
-    const comments = detail.comments;
-    console.log(comments);
-    console.log(comments.comment, comments.dateComment)
-    
-    renderComments(comments);
+  // navbar logo behaviour
 
-    const postForm = document.querySelector('#comment-form');
-    const commentInput = document.querySelector('#text-area');
-    const loader = document.querySelector(".lds-ellipsis");
-
-    postForm.addEventListener('submit', async evt => {
-        evt.preventDefault();
-        if(commentInput.validity.valid) {
-           loader.classList.toggle("no-display") 
-           await postComment(id, commentInput.value);
-           renderDetails(id); 
-        }
-
-    })
-
-        // navbar logo behaviour
-
-        const elementObserved = document.querySelector(".underlying");
-        launchIo(elementObserved);
-    
+  const elementObserved = document.querySelector('.underlying');
+  launchIo(elementObserved);
 };
 
-const commentTemplate = comment => {
-    return `
+const commentTemplate = (comment) => `
 <div class="single-comment">        
-<p class="comment-date"> <span class="date">${new Date(comment.dateComment).getDate()}/${new Date(comment.dateComment).getMonth()+1}/${new Date(comment.dateComment).getFullYear()} </span><span class="comment-time">${new Date(comment.dateComment).getHours()}:${new Date(comment.dateComment).getMinutes()}</span></p>
+<p class="comment-date"> <span class="date">${new Date(comment.dateComment).getDate()}/${new Date(comment.dateComment).getMonth() + 1}/${new Date(comment.dateComment).getFullYear()} </span><span class="comment-time">${new Date(comment.dateComment).getHours()}:${new Date(comment.dateComment).getMinutes()}</span></p>
 <p class="comment-text"> ${comment.comment} </p>
 </div>
 `;
-}
 
-const renderComments = array => {
-   const HTMLComments = array.slice(0).reverse().map(comment => commentTemplate(comment)).join("");
-   const container = document.querySelector(".comments-list");
+const renderComments = (array) => {
+  const HTMLComments = array.slice(0).reverse().map((comment) => commentTemplate(comment)).join('');
+  const container = document.querySelector('.comments-list');
 
-   container.innerHTML = `${HTMLComments}`;
-
-}
+  container.innerHTML = `${HTMLComments}`;
+};
 
 export default renderDetails;

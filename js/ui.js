@@ -1,8 +1,8 @@
-import {getBeers} from "./api.js";
-import renderBeers from "./beerCards.js";
-import storage from './storage.js';
 
-const { setItem, getItem } = storage();
+import renderBeers from './beerCards';
+import storage from './storage';
+
+const { setItem } = storage();
 
 export const SEARCH_INPUT = 'search_input';
 
@@ -16,51 +16,52 @@ const closeButton = document.querySelector(".close")
 const navLogo = document.getElementById("nav-logo");
 const filterContainer = document.querySelector('#beer-filters');
 
-searchGlass.addEventListener("click", evt =>{
-	navLogo.classList.add("no-display");
-	form.classList.toggle("no-display");
-	searchGlass.classList.toggle("no-display");
+searchGlass.addEventListener('click', (evt) => {
+  navLogo.classList.add('no-display');
+  form.classList.toggle('no-display');
+  searchGlass.classList.toggle('no-display');
 });
 
-closeButton.addEventListener("click", evt =>{
-	form.classList.toggle("no-display");
-	searchGlass.classList.toggle("no-display");
+closeButton.addEventListener('click', (evt) => {
+  form.classList.toggle('no-display');
+  searchGlass.classList.toggle('no-display');
 });
 
-form.addEventListener("submit", evt => {
-	 evt.preventDefault();
+form.addEventListener('submit', (evt) => {
+  evt.preventDefault();
 
-	if(input.validity.valid) {
-		renderBeers(input.value);
-		window.location.replace("/");
-		setItem(SEARCH_INPUT, input.value)
-	}
-
+  if (input.validity.valid) {
+    renderBeers(input.value);
+    window.location.replace('/');
+    setItem(SEARCH_INPUT, input.value);
+  }
 });
 
 // Intersection observer navbar
 export const launchIo = (element) => {
-
-    const navLogo = document.getElementById("nav-logo");
-    const options = {};
-    const cb = (entries, observer) => {
-	    entries.forEach(entry => {
-		    if(entry.isIntersecting) {
-			    navLogo.classList.toggle("no-display");
-		    }
-	    });
-    };
-
-    const io = new IntersectionObserver(cb, options);
-    io.observe(element);
-
-    navLogo.addEventListener('click', evt => {
-
-	    evt.preventDefault();
-	    window.scrollTo(0,0);
-	    navLogo.classList.add("no-display")
+  const navLogo = document.getElementById('nav-logo');
+  const options = {};
+  const cb = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        navLogo.classList.toggle('no-display');
+      }
     });
-}
+  };
+
+  const io = new IntersectionObserver(cb, options);
+  io.observe(element);
+
+  navLogo.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    window.scrollTo(0, 0);
+    navLogo.classList.add('no-display');
+  });
+};
+
+const filterTemplate = (input, index) => `
+    <li><label><input class ="${index}" type="checkbox" name=${input} value=${input} checked> ${input}</label></li></br>`;
+
 
 //Filter templates
 
@@ -126,12 +127,12 @@ args.forEach( item => {
             beerCard[index].classList.remove("no-display");
             });
     });
+  });
 
-    uncheckAll.addEventListener("click", evt =>{
-        checkers.forEach((item, index) => {
-            if(item.checked) { item.checked = false;};
-            beerCard[index].classList.add("no-display");
-            });
+  uncheckAll.addEventListener('click', (evt) => {
+    checkers.forEach((item, index) => {
+      if (item.checked) { item.checked = false; }
+      beerCard[index].classList.add('no-display');
     });
 
 

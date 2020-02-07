@@ -5,9 +5,13 @@
   "main": "index.js",
   "scripts": {
     "init:lint": "./node_modules/.bin/eslint --init",
+    "lint": "./node_modules/.bin/eslint './js/*'",
+    "fix:lint": "./node_modules/.bin/eslint './js/*' --fix",
     "webpack:demo:entry": "./node_modules/.bin/webpack --entry './js/routes.js'",
     "webpack": "./node_modules/.bin/webpack",
+    "webpack:prod": "./node_modules/.bin/webpack --config webpack.production.js",
     "webpack:watch": "./node_modules/.bin/webpack --watch",
+    "devserver": "./node_modules/.bin/webpack-dev-server",
     "start": "node server.js"
   },
   "repository": {
@@ -22,19 +26,31 @@
   },
   "homepage": "https://github.com/Sapoconchus/Practica-Frontend-Avanzado#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "core-js": "^3.6.4",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.4.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.20.0",
+    "file-loader": "^5.0.2",
+    "html-webpack-plugin": "^3.2.0",
     "husky": "^4.2.1",
+    "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.1.3",
+    "url-loader": "^3.0.0",
     "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
   },
   "husky": {
     "hooks": {

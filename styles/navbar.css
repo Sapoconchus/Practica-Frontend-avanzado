@@ -27,7 +27,7 @@ nav .logo {
 .search-bar {
 	display: flex;
 	flex-direction: row-reverse;
-	flex-shrink: 1
+	flex-shrink: 1;
 	margin-right: 10px;
 	align-items: center;
 	padding: 5px;

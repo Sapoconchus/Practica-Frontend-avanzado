@@ -1,13 +1,12 @@
-import { getBeers, addLike } from "./api.js";
-import storage from './storage.js';
-import { renderFilter, launchIo } from './ui.js';
+import { getBeers } from './api';
+import storage from './storage';
+import { renderFilter, launchIo } from './ui';
 
 const { setItem, getItem } = storage();
 
-const container = document.querySelector(".card-container")
+const container = document.querySelector('.card-container');
 
-const cardTemplate = beer => {
-    return `
+const cardTemplate = (beer) => `
     <div class="beer-card" id="${beer.beerId}">
         <div class="beer-pic">
             <a href="/beers/${beer.beerId}"><img src="${beer.image}"></a>
@@ -15,7 +14,7 @@ const cardTemplate = beer => {
             <div class="info-container">
                 <div class = "beer-info">
                    <a href="/beers/${beer.beerId}"> <h1 id="beer-name">${beer.name}</h1></a>
-                    <article class="first-rendered">${beer.description.length < 170 ? beer.description : beer.description.slice(0, 170) + ' [...]'}.</br><span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
+                    <article class="first-rendered">${beer.description.length < 170 ? beer.description : `${beer.description.slice(0, 170)} [...]`}.</br><span class="brew-year"> First brewed on ${beer.firstBrewed}.</span></article>
                 </div>
                 <div class ="card-pills">
                     <div id="social-pills">
@@ -30,8 +29,7 @@ const cardTemplate = beer => {
                 </div>
             </div>
         </div>
-    </div>`
-}
+    </div>`;
 
 const renderBeers = async input => {
     try {
@@ -52,15 +50,15 @@ const renderBeers = async input => {
 
         const priceFiltered = [...new Set(prices)];
 
-        const cardContainer = document.createElement("section")
-        cardContainer.classList.add("card-container");
+    const cardContainer = document.createElement('section');
+    cardContainer.classList.add('card-container');
 
-        cardContainer.innerHTML = `${htmlBeers}`;
-        main.appendChild(cardContainer);
+    cardContainer.innerHTML = `${htmlBeers}`;
+    main.appendChild(cardContainer);
 
-        //oberver for displaying logo on navbar
-        const cardObserved = document.querySelector(".beer-card:nth-child(5)");
-        launchIo(cardObserved);
+    // oberver for displaying logo on navbar
+    const cardObserved = document.querySelector('.beer-card:nth-child(5)');
+    launchIo(cardObserved);
 
         // Filter Objects and printing
 
@@ -114,4 +112,3 @@ const renderBeers = async input => {
 };
 
 export default renderBeers;
-
