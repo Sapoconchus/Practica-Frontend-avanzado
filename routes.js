@@ -1,9 +1,9 @@
-import renderBeers from './beerCards.js';
-import storage from './storage.js';
-import { SEARCH_INPUT } from './ui.js';
-import renderDetails from './beerDetail.js';
-import { getDetails } from './api.js';
-import renderLogin from './login.js';
+import renderBeers from './js/beerCards';
+import storage from './js/storage';
+import { SEARCH_INPUT } from './js/ui';
+import renderDetails from './js/beerDetail';
+import renderLogin from './js/login';
+import './styles/styles.css';
 
 const local = storage('localStore');
 const cookie = storage('cookieStore');

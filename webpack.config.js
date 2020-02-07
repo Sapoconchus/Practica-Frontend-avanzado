@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   mode: /* isProduction ? 'production' : */'development',
-  entry: path.join(__dirname, 'js', 'routes.js'),
+  entry: path.join(__dirname, 'routes.js'),
   output: {
     path: path.join(__dirname, 'js', 'build'),
     filename: 'bundle.[hash].js',

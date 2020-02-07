@@ -1,6 +1,6 @@
-import { getBeers } from './api.js';
-import storage from './storage.js';
-import { renderFilter, launchIo } from './ui.js';
+import { getBeers } from './api';
+import storage from './storage';
+import { renderFilter, launchIo } from './ui';
 
 const { setItem, getItem } = storage();
 

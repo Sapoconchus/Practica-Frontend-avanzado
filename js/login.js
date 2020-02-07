@@ -1,7 +1,7 @@
-import storage from './storage.js';
-import renderBeers from './beerCards.js';
-import { SEARCH_INPUT } from './ui.js';
-import { userRegister, getUser } from './api.js';
+import storage from './storage';
+import renderBeers from './beerCards';
+import { SEARCH_INPUT } from './ui';
+import { userRegister, getUser } from './api';
 
 const cookie = storage('cookieStore');
 const session = storage('sessionStore');
