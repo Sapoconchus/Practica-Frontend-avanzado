@@ -1,4 +1,4 @@
-import { getBeers } from './api';
+import { getBeers, addLike } from './api';
 import storage from './storage';
 import { renderFilter, launchIo } from './ui';
 
@@ -31,24 +31,24 @@ const cardTemplate = (beer) => `
         </div>
     </div>`;
 
-const renderBeers = async input => {
-    try {
-        const beers = await getBeers(input);
+const renderBeers = async (input) => {
+  try {
+    const beers = await getBeers(input);
 
-        const main = document.querySelector("main");
-        const dates = [];
-        const prices = [];
-        const ingredients = [];
-        const names = [];
-        const htmlBeers = beers.map(beer => {
-            dates.push(beer.firstBrewed);
-            prices.push(beer.price)
-            ingredients.push(beer.ingredients);
-            names.push(beer.name);
-            return cardTemplate(beer);
-        }).join("");
+    const main = document.querySelector('main');
+    const dates = [];
+    const prices = [];
+    const ingredients = [];
+    const names = [];
+    const htmlBeers = beers.map((beer) => {
+      dates.push(beer.firstBrewed);
+      prices.push(beer.price);
+      ingredients.push(beer.ingredients);
+      names.push(beer.name);
+      return cardTemplate(beer);
+    }).join('');
 
-        const priceFiltered = [...new Set(prices)];
+    // const priceFiltered = [...new Set(prices)];
 
     const cardContainer = document.createElement('section');
     cardContainer.classList.add('card-container');
@@ -60,55 +60,52 @@ const renderBeers = async input => {
     const cardObserved = document.querySelector('.beer-card:nth-child(5)');
     launchIo(cardObserved);
 
-        // Filter Objects and printing
+    // Filter Objects and printing
 
-        const dateFilter = {
-            inputs: dates,
-            name: "firstly-brewed"
-            };
+    const dateFilter = {
+      inputs: dates,
+      name: 'firstly-brewed',
+    };
 
-        const priceFilter = {
-            inputs: prices,
-            name: "price"
-        };
-        const nameFilter = {
-            inputs: names,
-            name: "brand"
-        };
+    const priceFilter = {
+      inputs: prices,
+      name: 'price',
+    };
+    const nameFilter = {
+      inputs: names,
+      name: 'brand',
+    };
 
 
-        const ingredientsFilter = {
-            inputs: ingredients,
-            name: "ingredients"
-        };
+    const ingredientsFilter = {
+      inputs: ingredients,
+      name: 'ingredients',
+    };
 
-        renderFilter(dateFilter, priceFilter, nameFilter)
+    renderFilter(dateFilter, priceFilter, nameFilter);
 
     // likes manager AINT WORKING JUST YET
 
-    const thumbUp = document.querySelectorAll(".icofont-like");
+    const thumbUp = document.querySelectorAll('.icofont-like');
 
     console.log(thumbUp);
 
-    thumbUp.forEach(icon => {
+    thumbUp.forEach((icon) => {
+      const id = icon.parentNode.parentNode.parentNode.parentNode.getAttribute('id');
 
-        const id = icon.parentNode.parentNode.parentNode.parentNode.getAttribute("id");
+      const liker = (evt) => {
+        addLike(`/beers/${id}`);
+        icon.classList.add('liked');
+        const likeNum = icon.nextSibling.nextSibling;
+        likeNum.innerText = parseInt(likeNum.innerText) + 1;
+        icon.removeEventListener('click', liker);
+      };
 
-        const liker = evt => {
-        
-          addLike(`/beers/${id}`); 
-          icon.classList.add("liked");
-          const likeNum= icon.nextSibling.nextSibling;
-          likeNum.innerText = parseInt(likeNum.innerText) + 1;
-          icon.removeEventListener('click', liker)
-        }
-
-        getItem(`/beers/${id}`) !== "liked" ?  icon.addEventListener('click', liker) : icon.classList.add("liked");
-    })    
-
-    } catch (err) {
-        console.log(err);
-    }
+      getItem(`/beers/${id}`) !== 'liked' ? icon.addEventListener('click', liker) : icon.classList.add('liked');
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export default renderBeers;

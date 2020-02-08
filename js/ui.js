@@ -61,9 +61,6 @@ export const launchIo = (element) => {
 
 // Filter templates
 
-const filterTemplateBefore = (input, index) => `
-    <li><label><input class ="${index}" type="checkbox" name=${input} value=${input} checked> ${input}</label></li></br>`;
-
 const filterTemplate = (name) => `
         <button id="${name}-button-filter" class="open-filter"> ${name} <i class="icofont-filter"> </i> </button>
         <div id="${name}-filter-list" class="no-display">
@@ -74,7 +71,6 @@ const filterTemplate = (name) => `
 const listTemplate = (input, index, name) => `
 <li><label><input class="${index}" type="checkbox" name=${name} value=${input} checked> ${input}</label></li></br>
 `;
-
 
 // Home page filter render
 
@@ -121,12 +117,12 @@ export const renderFilter = (...args) => {
         beerCard[index].classList.remove('no-display');
       });
     });
-  });
 
-  uncheckAll.addEventListener('click', (evt) => {
-    checkers.forEach((item, index) => {
-      if (item.checked) { item.checked = false; }
-      beerCard[index].classList.add('no-display');
+    uncheckAll.addEventListener('click', (evt) => {
+      checkers.forEach((item, index) => {
+        if (item.checked) { item.checked = false; }
+        beerCard[index].classList.add('no-display');
+      });
     });
 
 
@@ -136,7 +132,7 @@ export const renderFilter = (...args) => {
     const expand = document.getElementById(`${item.name}-button-filter`);
     const openList = document.getElementById(`${item.name}-filter-list`);
 
-    expand.addEventListener('click', (evt) => {
+    expand.addEventListener('click', () => {
       openList.classList.toggle('no-display');
       listExpander.classList.toggle('expand-list'); //
     });
