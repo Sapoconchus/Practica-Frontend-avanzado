@@ -5,7 +5,7 @@ const app = express();
 
 console.log(__dirname);
 
-app.use(express.static('.'));
+app.use(express.static('./bundle'));
 app.get('/*', (req, res) => {
   res.sendFile(__dirname + '/js/build/index.html');
 });
