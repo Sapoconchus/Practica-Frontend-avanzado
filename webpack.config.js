@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 // const isProduction = process.env.NODE_ENV === 'production';
 
@@ -10,7 +11,7 @@ module.exports = {
   mode: /* isProduction ? 'production' : */'development',
   entry: path.join(__dirname, 'routes.js'),
   output: {
-    path: path.join(__dirname, 'js', 'build'),
+    path: path.join(__dirname, 'bundle'),
     filename: 'bundle.[hash].js',
   },
 
@@ -37,13 +38,13 @@ module.exports = {
         use: 'babel-loader',
         exclude: /node_modules/,
       },
-      /* {
-        test: /\.(jpe?g|png|svg|gif)$/,
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file-loader',
         options: {
           name: '[path][name].[ext]',
         },
-      }, */
+      },
       {
         test: /\.(jpe?g|png|svg|gif)$/,
         loader: 'url-loader',
@@ -60,9 +61,12 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.join(__dirname, 'index.html' )
+      template: path.join(__dirname, 'index.html'),
 
     }),
+    new CopyPlugin ([
+      {from: './styles/typography/icofont', to: '/bundle/styles/typography/icofont'}
+    ]),
   ],
 
   devServer: {

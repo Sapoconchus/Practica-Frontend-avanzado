@@ -2,8 +2,8 @@ import renderBeers from './beerCards';
 import storage from './storage';
 import { SEARCH_INPUT } from './ui';
 import renderDetails from './beerDetail';
-import { getDetails } from './api';
 import renderLogin from './login';
+import "./styles/styles.css";
 
 const local = storage('localStore');
 const cookie = storage('cookieStore');
