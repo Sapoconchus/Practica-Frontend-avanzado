@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/Sapoconchus/Practica-Frontend-Avanzado#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   },
   "devDependencies": {
     "css-loader": "^3.4.2",
